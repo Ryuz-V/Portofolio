@@ -1,0 +1,259 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-bottom: 4rem;
+  color: #e5e7eb;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #27272a;
+  margin: 0;
+}
+
+/* Typography */
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionSubtitle {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.heroTitle {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.heroMeta {
+  display: flex;
+  gap: 1rem;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.heroMeta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.heroDesc {
+  color: #d4d4d8;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+/* Cards & Containers */
+.card {
+  background-color: #121212;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.statCard {
+  background-color: #121212;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  color: #a1a1aa;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  color: #fbbf24;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.statValueSmall {
+  font-size: 1rem;
+  color: #e5e7eb;
+}
+
+.statSubValue {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  margin-left: 0.25rem;
+}
+
+/* Skills */
+.skillTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.skillTab {
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  background-color: #18181b;
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skillTab.active {
+  background-color: #facc15;
+  color: #000;
+  border-color: #facc15;
+  font-weight: 500;
+}
+
+.skillTabBadge {
+  background-color: #27272a;
+  color: #fff;
+  padding: 0.1rem 0.4rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+}
+.skillTab.active .skillTabBadge {
+  background-color: rgba(0,0,0,0.2);
+  color: #000;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+/* Github Pinned */
+.pinnedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.pinnedCard {
+  background-color: #121212;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pinnedName {
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pinnedDesc {
+  color: #a1a1aa;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.pinnedFooter {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #a1a1aa;
+  align-items: center;
+}
+
+.pinnedLang {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pinnedLangColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Wakatime & Chart */
+.chartContainer {
+  height: 300px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.progressItem {
+  margin-bottom: 0.75rem;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.progressTrack {
+  height: 8px;
+  background-color: #27272a;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #fbbf24;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+}

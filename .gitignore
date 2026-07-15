@@ -1,0 +1,20 @@
+node_modules/
+dist/
+build/
+*.log
+*.tsbuildinfo
+# Ignore environment variable files
+.env*
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Next.js
+.next
+out
+.vercel

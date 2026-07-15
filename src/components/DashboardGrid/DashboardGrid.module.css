@@ -1,0 +1,200 @@
+/* ── Feed Container ─────────────────────────── */
+.feedContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Jarak antar kotak didekatkan dari 24px menjadi 16px */
+  padding-bottom: 0;
+}
+
+/* ── Card ───────────────────────────────────── */
+.card {
+  background: #141414; 
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0; /* Sudut lancip */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  margin-bottom: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+/* Efek Hover diubah menjadi warna abu-abu ke putih */
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+/* ── Header Bar ─────────────────────────────── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  background: #1c1c24; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.headerDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 0; 
+  background-color: #52525b; 
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #e5e7eb;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+/* ── Date (inside header) ───────────────────── */
+.cardDate {
+  font-size: 0.65rem;
+  color: #71717a;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.headerRight {
+  display: flex;
+  gap: 0.3rem;
+}
+
+/* ── Lang Toggle (Kembali ke nuansa abu-abu) ── */
+.langToggle {
+  display: flex;
+  gap: 2px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.langTag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  border-radius: 0; 
+}
+
+/* Status aktif kembali abu-abu terang / putih */
+.langTagActive {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.langTag:hover:not(.langTagActive) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+/* ── Thumbnail ──────────────────────────────── */
+.thumbnail {
+  width: 360px;
+  height: 270px;
+  flex-shrink: 0;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  border-radius: 0; 
+  margin: 1rem 0 0.5rem 1rem;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+  transition: filter 0.3s ease, transform 0.4s ease;
+}
+
+/* ── Content (below image) ──────────────────── */
+.content {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.body {
+  color: #a1a1aa; 
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Quote Block ────────────────────────────── */
+.quote {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid #52525b; /* Kembali ke garis abu-abu */
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #b4b4bc;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  font-style: italic;
+  border-radius: 0; 
+}
+
+/* ── Soundcloud Embed ───────────────────────── */
+.soundcloudEmbed {
+  width: calc(100% - 2rem);
+  margin: 0.5rem 1rem 1.5rem;  
+}
+
+.soundcloudEmbed iframe {
+  width: 75%;     
+  height: 200px;     
+  border-radius: 0; 
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 768px) {
+  .feedContainer {
+    gap: 12px; /* Disesuaikan agar di layar kecil tidak terlalu renggang */
+  }
+  
+  .thumbnail {
+    width: calc(100% - 2rem);
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+  
+  .soundcloudEmbed iframe {
+    width: 100%;
+  }
+}

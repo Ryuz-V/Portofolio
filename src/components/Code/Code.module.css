@@ -1,0 +1,296 @@
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* ─── KOTAK BAR ATAS KHUSUS BAHASA ───────────────────────────────────────── */
+.topBar {
+  width: 100%;
+  background: #1c1c24; 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0; 
+  margin-bottom: 16px; /* Jarak 16px ke kotak About */
+  display: flex;
+  justify-content: flex-end; 
+  padding: 6px 12px;
+  box-sizing: border-box;
+}
+
+.langToggle {
+  display: flex;
+  gap: 2px;
+}
+
+.langBtn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  border-radius: 0; 
+}
+
+.langBtn:first-child {
+  border-radius: 0;
+}
+
+.langBtn:last-child {
+  border-radius: 0;
+}
+
+/* Mengubah warna ungu jadi putih transparan saat aktif */
+.langActive {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.langBtn:hover:not(.langActive) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+/* ─── ABOUT PANEL ─────────────────────────────────────────────────────────── */
+.aboutPanel {
+  background: #141414; 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0; 
+  margin-bottom: 16px; /* Jarak 16px ke grid proyek di bawahnya */
+  overflow: hidden;
+}
+
+.aboutHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #1c1c24; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.aboutIcon {
+  display: flex;
+  align-items: center;
+  color: #a1a1aa;
+}
+
+.aboutTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d4d4d8;
+  letter-spacing: 0.04em;
+}
+
+.aboutContent {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.aboutText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.aboutText p {
+  font-size: 0.82rem;
+  color: #a1a1aa;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.aboutText p:first-child {
+  color: #b4b4bc;
+}
+
+/* ─── ILLUSTRATION ────────────────────────────────────────────────────────── */
+.aboutIllustration {
+  flex-shrink: 0;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.75;
+}
+
+/* Mengubah shadow ungu pada SVG menjadi putih/abu-abu terang */
+.illSvg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+}
+
+/* ─── PROJECT GRID ────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; /* Jarak antar kotak proyek 16px */
+}
+
+/* ─── CARD ────────────────────────────────────────────────────────────────── */
+.card {
+  background: #141414; 
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+/* Efek hover ungu dihapus, diganti putih abu-abu */
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  background: #1c1c24; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  color: #71717a;
+  flex-shrink: 0;
+}
+
+.cardName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: italic;
+  flex-shrink: 0;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+.cardDot {
+  color: #52525b;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cardSubtitle {
+  font-size: 0.72rem;
+  color: #a1a1aa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.cardTag {
+  font-size: 0.65rem;
+  color: #71717a;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Card Body */
+.cardBody {
+  flex: 1;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+/* ─── CODE BLOCK ──────────────────────────────────────────────────────────── */
+.codeBlock {
+  padding: 1rem 0.5rem;
+  background: #141414; 
+  height: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 0.7rem;
+  line-height: 1.7;
+}
+
+.codeLine {
+  display: flex;
+  align-items: baseline;
+  padding: 0 8px;
+  white-space: pre;
+}
+
+.codeLine:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.lineNum {
+  display: inline-block;
+  width: 24px;
+  color: #3f4451;
+  text-align: right;
+  margin-right: 16px;
+  user-select: none;
+  flex-shrink: 0;
+  font-size: 0.65rem;
+}
+
+.codeKeyword {
+  color: #c678dd;
+}
+
+.codeString {
+  color: #98c379;
+}
+
+.codeComment {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* ─── PREVIEW BLOCK ───────────────────────────────────────────────────────── */
+.previewBlock {
+  width: 100%;
+  min-height: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.previewText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  letter-spacing: 0.05em;
+  white-space: pre-line;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutContent {
+    flex-direction: column;
+  }
+
+  .aboutIllustration {
+    width: 160px;
+  }
+}

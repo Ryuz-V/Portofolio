@@ -1,0 +1,239 @@
+.sidebar {
+  width: 100%;
+  background-color: transparent; /* Diubah jadi transparan agar garis background global terlihat */
+  color: #a0a0a0;
+  padding: 2rem 1.5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Dibuat hidden agar tidak bisa dan tidak ada efek scroll sama sekali */
+  border-right: 1.5px solid rgba(255, 255, 255, 0.15); /* Dipertebal dan diperjelas warnanya */
+  font-family: var(--font-body);
+}
+
+.logoContainer {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.logoText {
+  font-family: var(--font-heading), sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  padding: 3px;
+  background: #00bbfa;
+  margin-bottom: 1rem;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #2a2a2a; 
+  border: 2px solid #0f0f0f;
+  display: block;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.verifiedIcon {
+  width: 16px;
+  height: 16px;
+  color: #3b82f6;
+}
+
+.username {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 0.5rem; /* Dikurangi dari 1.5rem karena control button dihapus */
+}
+
+.langSwitcher {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 0.3rem;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.langBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.4;
+  border: none;
+  background: transparent;
+}
+
+.langBtn:hover {
+  opacity: 0.8;
+}
+
+.langBtn.active {
+  background: #2a2a2a;
+  opacity: 1;
+}
+
+.flagIcon {
+  width: 22px;
+  height: auto;
+  border-radius: 2px;
+}
+
+.controls {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 20px;
+  padding: 0.3rem;
+  gap: 0.2rem;
+}
+
+.controlBtn {
+  width: 30px;
+  height: 25px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #777;
+}
+
+.controlBtn.active {
+  background: #252525;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.dotDark {
+  width: 10px;
+  height: 10px;
+  background: #333;
+  border-radius: 50%;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; /* Jarak renggang dikembalikan sedikit namun tak selebar semula */
+  flex-grow: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem; /* Padding dibuat sedikit lebih tebal kembali agar pas */
+  border-radius: 10px;
+  color: #888;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navItem svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+}
+
+.navItem:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+}
+
+.navItem:hover svg {
+  opacity: 1;
+}
+
+.activeNav {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.divider {
+  height: 1px;
+  background-color: #1a1a1a;
+  margin: 1rem 0;
+}
+
+.outlineBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 20px;
+  color: #10b981;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+}
+
+.outlineBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.outlineBtn:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  margin-bottom: 4.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #e0e0e0;
+  line-height: 1.6;
+}

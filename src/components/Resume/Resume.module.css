@@ -1,0 +1,264 @@
+/* ─── WRAPPER ──────────────────────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}
+
+/* ─── DOCUMENT VIEWER CONTAINER ────────────────────────────────────────────── */
+.viewerContainer {
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0; /* Sudut lancip */
+  display: flex;
+  flex-direction: column;
+  height: 80vh; /* Ketinggian viewer, bisa disesuaikan */
+  min-height: 600px;
+  overflow: hidden;
+}
+
+/* ─── TOP BAR / HEADER ─────────────────────────────────────────────────────── */
+.viewerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #1c1c24; /* Sama dengan header Code/Dashboard */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  color: #71717a;
+  display: flex;
+  align-items: center;
+}
+
+.headerTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d4d4d8;
+  letter-spacing: 0.04em;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.openText {
+  font-size: 0.7rem;
+  color: #a1a1aa;
+}
+
+.iconLink {
+  color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.iconLink:hover {
+  color: #e5e7eb;
+}
+
+/* ─── VIEWER BODY (SCROLLABLE AREA) ────────────────────────────────────────── */
+.viewerBody {
+  flex: 1;
+  background: #0a0a0c; /* Latar belakang viewer (lebih gelap dari kertas) */
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+/* Scrollbar khusus untuk tema gelap */
+.viewerBody::-webkit-scrollbar {
+  width: 14px;
+}
+.viewerBody::-webkit-scrollbar-track {
+  background: #0a0a0c;
+  border-left: 1px solid rgba(255, 255, 255, 0.04);
+}
+.viewerBody::-webkit-scrollbar-thumb {
+  background: #1c1c24;
+  border: 3px solid #0a0a0c;
+  border-radius: 0; /* Lancip */
+}
+.viewerBody::-webkit-scrollbar-thumb:hover {
+  background: #2a2a35;
+}
+
+/* ─── THE "PAPER" (RESUME CONTENT) ─────────────────────────────────────────── */
+.paper {
+  background: #141414; /* Warna khas Anda */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  max-width: 800px; /* Lebar maksimal resume */
+  height: fit-content;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── RESUME TYPOGRAPHY & LAYOUT ───────────────────────────────────────────── */
+.resumeHeader {
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 20px;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  margin: 0 0 12px 0;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #a1a1aa;
+}
+
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+.contactInfo a, .contactInfo span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #71717a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contactInfo a:hover {
+  color: #e5e7eb;
+}
+
+/* ─── SECTIONS ─────────────────────────────────────────────────────────────── */
+.section {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e5e7eb;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 16px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+}
+
+/* ─── ENTRIES (WORK, EDUCATION, ETC) ───────────────────────────────────────── */
+.entry {
+  margin-bottom: 20px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.entryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.entryTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #d4d4d8;
+  margin: 0;
+}
+
+.entryDate {
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+.entrySubtitle {
+  font-size: 0.8rem;
+  color: #a1a1aa;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.entryList {
+  margin: 0;
+  padding-left: 18px;
+  color: #a1a1aa;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.entryList li {
+  margin-bottom: 4px;
+}
+
+/* ─── SKILLS / BADGES ──────────────────────────────────────────────────────── */
+.skillCategory {
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: #d4d4d8;
+}
+
+.skillCategory strong {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.badges span {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 0; /* Sudut lancip */
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .paper {
+    padding: 24px;
+  }
+  
+  .entryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .entryDate {
+    margin-top: 2px;
+  }
+}
