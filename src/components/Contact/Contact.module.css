@@ -1,140 +1,124 @@
-.contactSection {
-  min-height: auto;
-  padding: 6rem 0;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  padding: 4rem;
-  backdrop-filter: blur(12px);
-}
-
-.info {
+.wrapper {
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-body, 'Inter', sans-serif);
 }
 
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+.panel {
+  background: #141414; 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0; 
+  margin-bottom: 16px;
+  overflow: hidden;
 }
 
-.description {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #1c1c24; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.contactDetails {
+.panelIcon {
+  display: flex;
+  align-items: center;
+  color: #a1a1aa;
+}
+
+.panelTitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d4d4d8;
+  letter-spacing: 0.04em;
+}
+
+.panelContent {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: auto;
 }
 
-.detailItem {
+.panelText {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
-.icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(124, 58, 237, 0.1);
-  color: #c084fc;
-  border-radius: 50%;
+.panelText p {
+  font-size: 0.82rem;
+  color: #a1a1aa;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.panelText p:first-child {
+  color: #b4b4bc;
+}
+
+.panelText strong {
+  color: #e5e7eb;
+}
+
+/* Grid for social links */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #141414; 
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0; 
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+}
+
+.cardHeader {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  padding: 7px 12px;
+  background: #1c1c24; 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: italic;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  color: #d4d4d8;
+  letter-spacing: 0.04em;
 }
 
-.detailText {
+.cardBody {
+  padding: 1.25rem 1rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
 }
 
-.detailText span {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3rem;
-}
-
-.detailText a, .detailText p {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-/* Form Styles */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.formGroup label {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-.formGroup input,
-.formGroup textarea {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--glass-border);
-  padding: 1rem;
-  border-radius: 10px;
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
-}
-
-.successMessage {
-  color: #10b981;
-  font-size: 0.95rem;
-  text-align: center;
-  margin-top: 1rem;
-  padding: 1rem;
-  background: rgba(16, 185, 129, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-@media (max-width: 968px) {
-  .container {
-    grid-template-columns: 1fr;
-    padding: 3rem 2rem;
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: 2.2rem;
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
