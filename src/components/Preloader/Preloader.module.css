@@ -1,16 +1,15 @@
+/* ─── Full Screen Overlay ─── */
 .preloader {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: #0a0a0a;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.5s ease-out;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  transition: opacity 0.6s ease-out;
 }
 
 .fadeOut {
@@ -18,48 +17,142 @@
   pointer-events: none;
 }
 
-.container {
-  width: 400px;
-  max-width: 90%;
+/* ─── CRT / Monitor Screen Frame ─── */
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  height: 180px; /* Fix the height so the container doesn't grow and move the bar */
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.progressBarContainer {
+/* Scanlines overlay for CRT feel */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.18) 2px,
+    rgba(0, 0, 0, 0.18) 4px
+  );
+  z-index: 1;
+}
+
+/* ─── Content Container ─── */
+.container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 480px;
+  max-width: 90vw;
+}
+
+/* ─── Title ─── */
+.title {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: clamp(14px, 2vw, 22px);
+  font-weight: 700;
+  color: #e8e8e0;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 0;
+  /* Pixel/retro text rendering */
+  image-rendering: pixelated;
+  text-shadow:
+    0 0 8px rgba(220, 220, 200, 0.35),
+    0 0 20px rgba(200, 200, 180, 0.1);
+}
+
+/* ─── Blinking Cursor ─── */
+.cursor {
+  display: inline-block;
+  font-weight: 700;
+  color: #c8c8b8;
+  transition: opacity 0.1s;
+}
+.cursorVisible {
+  opacity: 1;
+}
+.cursorHidden {
+  opacity: 0;
+}
+
+/* ─── Loading Section ─── */
+.loadingSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   width: 100%;
-  height: 12px;
-  background-color: #46463c; /* Darker greenish/grey */
+}
+
+/* LOADING label */
+.loadingLabel {
+  font-family: "Courier New", Courier, "Lucida Console", monospace;
+  font-size: clamp(10px, 1.8vw, 13px);
+  letter-spacing: 0.22em;
+  color: #a0a090;
+  text-align: center;
+  min-height: 1.4em;
+}
+
+/* ─── Progress Bar ─── */
+.progressBarWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.progressBarTrack {
+  width: 100%;
+  height: 14px;
+  background-color: #2a2a26;
+  border: 1px solid #4a4a42;
+  overflow: hidden;
 }
 
 .progressBarFill {
   height: 100%;
-  background-color: #b9b9a6; /* Lighter beige/grey fill */
-  transition: width 0.05s linear;
+  background-color: #c8c8b0;
+  transition: width 0.04s linear;
+  box-shadow: 0 0 6px rgba(200, 200, 180, 0.5);
 }
 
-.logContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Logs start from top and flow downwards */
-  font-size: 12px;
-  color: #999;
-  line-height: 1.4;
-  margin-top: 4px;
-  height: 140px; /* Fixed height so bar doesn't move */
-  overflow: hidden;
+/* Corner decorators like classic BIOS bars */
+.progressCornerTL,
+.progressCornerTR,
+.progressCornerBL,
+.progressCornerBR {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-color: #6a6a5e;
+  border-style: solid;
 }
-
-.logLine {
-  white-space: pre-wrap;
-  word-break: break-all;
+.progressCornerTL {
+  top: -2px;
+  left: -2px;
+  border-width: 1px 0 0 1px;
 }
-
-/* Fading out older text slightly to match effect if desired, but image shows consistent gray. 
-   We will just keep it simple with slightly darker logs towards the end, or consistent #999.
-*/
-.logLine:last-child {
-  color: #777; /* Make the final booting message a bit darker as in some boot sequences, or just #999 */
+.progressCornerTR {
+  top: -2px;
+  right: -2px;
+  border-width: 1px 1px 0 0;
+}
+.progressCornerBL {
+  bottom: -2px;
+  left: -2px;
+  border-width: 0 0 1px 1px;
+}
+.progressCornerBR {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 1px 1px 0;
 }

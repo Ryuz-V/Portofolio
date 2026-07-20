@@ -68,6 +68,16 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ── Preloader Active: lock scroll + hide extras ── */
+body.preloader-active {
+  overflow: hidden !important;
+}
+
+/* Hide MusicPlayer while preloader is showing */
+body.preloader-active [class*="playerContainer"] {
+  display: none !important;
+}
+
 /* Ensure page content is above the starfield canvas (z-index: 0) */
 body>*:not(canvas) {
   position: relative;

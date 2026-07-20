@@ -1,57 +1,84 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Preloader.module.css";
 
-const LOG_SEQUENCE = [
-  { text: "[  735] /css/tokyo-night-dark.min.css", delay: 200 },
-  { text: "[    0] loading additional resources...", delay: 500 },
-  { text: "[    0] /js/lecoq.js", delay: 800 },
-  { text: "[    0] /css/root.js", delay: 1100 },
-  { text: "[    0] /index.html", delay: 1400 },
-  { text: "[    0] loading minimal resources...", delay: 1700 },
-  { text: "[    0] booting v0.6...", delay: 2000 },
-];
+const TITLE = "PORTOFOLIO";
+const LOADING_TEXT = "LOADING";
 
 export default function Preloader() {
-  const [logs, setLogs] = useState<string[]>([]);
+  const [titleText, setTitleText] = useState("");
+  const [loadingVisible, setLoadingVisible] = useState(false);
+  const [loadingText, setLoadingText] = useState("");
   const [progress, setProgress] = useState(0);
   const [loadingComplete, setLoadingComplete] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    let currentProgress = 0;
-    const totalDuration = 2500; // 2.5 seconds total loading time
-    const intervalTime = 50;
-    const increment = (100 / (totalDuration / intervalTime));
+    // Lock scroll & hide MusicPlayer while preloader is active
+    document.body.classList.add("preloader-active");
 
-    const progressInterval = setInterval(() => {
-      currentProgress += increment;
-      if (currentProgress >= 100) {
-        currentProgress = 100;
-        clearInterval(progressInterval);
+    // Blink cursor
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+
+    // Type the title
+    let titleIndex = 0;
+    const titleInterval = setInterval(() => {
+      if (titleIndex < TITLE.length) {
+        setTitleText(TITLE.slice(0, titleIndex + 1));
+        titleIndex++;
+      } else {
+        clearInterval(titleInterval);
+
+        // After title is done, show LOADING label typing
+        setTimeout(() => {
+          setLoadingVisible(true);
+          let loadingIndex = 0;
+          const loadingInterval = setInterval(() => {
+            if (loadingIndex < LOADING_TEXT.length) {
+              setLoadingText(LOADING_TEXT.slice(0, loadingIndex + 1));
+              loadingIndex++;
+            } else {
+              clearInterval(loadingInterval);
+
+              // Start progress bar after LOADING is typed
+              setTimeout(() => {
+                let currentProgress = 0;
+                const totalDuration = 2200;
+                const intervalTime = 40;
+                const increment = 100 / (totalDuration / intervalTime);
+
+                const progressInterval = setInterval(() => {
+                  currentProgress += increment;
+                  if (currentProgress >= 100) {
+                    currentProgress = 100;
+                    clearInterval(progressInterval);
+
+                    // Finish — restore scroll & show MusicPlayer
+                    setTimeout(() => {
+                      setLoadingComplete(true);
+                      setTimeout(() => {
+                        document.body.classList.remove("preloader-active");
+                        setIsVisible(false);
+                      }, 600);
+                    }, 300);
+                  }
+                  setProgress(currentProgress);
+                }, intervalTime);
+              }, 200);
+            }
+          }, 80);
+        }, 200);
       }
-      setProgress(currentProgress);
-    }, intervalTime);
-
-    const timeouts: NodeJS.Timeout[] = [];
-
-    LOG_SEQUENCE.forEach(({ text, delay }) => {
-      const timeout = setTimeout(() => {
-        setLogs((prev) => [...prev, text]);
-      }, delay);
-      timeouts.push(timeout);
-    });
-
-    const finishTimeout = setTimeout(() => {
-      setLoadingComplete(true);
-      setTimeout(() => setIsVisible(false), 500); // fade out duration
-    }, totalDuration + 200);
+    }, 90);
 
     return () => {
-      clearInterval(progressInterval);
-      timeouts.forEach(clearTimeout);
-      clearTimeout(finishTimeout);
+      clearInterval(cursorInterval);
+      clearInterval(titleInterval);
+      document.body.classList.remove("preloader-active");
     };
   }, []);
 
@@ -59,17 +86,40 @@ export default function Preloader() {
 
   return (
     <div className={`${styles.preloader} ${loadingComplete ? styles.fadeOut : ""}`}>
-      <div className={styles.container}>
-        <div className={styles.progressBarContainer}>
-          <div 
-            className={styles.progressBarFill} 
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-        <div className={styles.logContainer}>
-          {logs.map((log, i) => (
-            <div key={i} className={styles.logLine}>{log}</div>
-          ))}
+      <div className={styles.screen}>
+        <div className={styles.scanlines} />
+        <div className={styles.container}>
+          <h1 className={styles.title}>
+            {titleText}
+            <span className={`${styles.cursor} ${showCursor ? styles.cursorVisible : styles.cursorHidden}`}>
+              _
+            </span>
+          </h1>
+
+          {loadingVisible && (
+            <div className={styles.loadingSection}>
+              <div className={styles.loadingLabel}>
+                {loadingText}
+                {loadingText.length < LOADING_TEXT.length && (
+                  <span className={`${styles.cursor} ${showCursor ? styles.cursorVisible : styles.cursorHidden}`}>
+                    _
+                  </span>
+                )}
+              </div>
+              <div className={styles.progressBarWrapper}>
+                <div className={styles.progressBarTrack}>
+                  <div
+                    className={styles.progressBarFill}
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+                <div className={styles.progressCornerTL} />
+                <div className={styles.progressCornerTR} />
+                <div className={styles.progressCornerBL} />
+                <div className={styles.progressCornerBR} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
