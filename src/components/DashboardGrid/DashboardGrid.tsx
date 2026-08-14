@@ -3,6 +3,16 @@ import Image from "next/image";
 
 const feedPosts = [
   {
+    id: 5,
+    title: "World",
+    date: "Wednesday, August 5, 2026",
+    langs: ["EN", "ID"],
+    image: null,
+    soundcloud: "https://soundcloud.com/goodkidband/cicada?si=6152cf245a804b62a164fce2c5a27353&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    body: "Woah i understand now, how this world works, how people work, how i work. Well thanks to people who have been through the same thing as me, who have been through worse than me, who have been through better than me. I understand now that this world is not just black and white, but a spectrum of colors and emotions. I understand that people are not just good or bad, but complex beings with their own struggles and triumphs. I understand that i am not just a victim or a survivor, but a person with my own story to tell.",
+    quote: "The sadness of having lost everything may not even be as great as the regrets of not having lived...",
+  },
+  {
     id: 4,
     title: "World",
     date: "Monday, December 29, 2025",

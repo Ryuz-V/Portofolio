@@ -64,7 +64,7 @@
 .card {
   background-color: #121212;
   border: 1px solid #27272a;
-  border-radius: 0.75rem;
+  border-radius: 0;
   padding: 1.25rem;
 }
 
@@ -78,7 +78,7 @@
 .statCard {
   background-color: #121212;
   border: 1px solid #27272a;
-  border-radius: 0.75rem;
+  border-radius: 0;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -117,7 +117,7 @@
 
 .skillTab {
   padding: 0.4rem 1rem;
-  border-radius: 2rem;
+  border-radius: 0;
   background-color: #18181b;
   border: 1px solid #27272a;
   color: #a1a1aa;
@@ -140,7 +140,7 @@
   background-color: #27272a;
   color: #fff;
   padding: 0.1rem 0.4rem;
-  border-radius: 1rem;
+  border-radius: 0;
   font-size: 0.75rem;
 }
 .skillTab.active .skillTabBadge {
@@ -161,7 +161,7 @@
   padding: 0.5rem 1rem;
   background-color: #18181b;
   border: 1px solid #27272a;
-  border-radius: 2rem;
+  border-radius: 0;
   font-size: 0.9rem;
   color: #e5e7eb;
 }
@@ -177,7 +177,7 @@
 .pinnedCard {
   background-color: #121212;
   border: 1px solid #27272a;
-  border-radius: 0.75rem;
+  border-radius: 0;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -241,14 +241,14 @@
 .progressTrack {
   height: 8px;
   background-color: #27272a;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
 }
 
 .progressBar {
   height: 100%;
   background-color: #fbbf24;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 /* Responsive */

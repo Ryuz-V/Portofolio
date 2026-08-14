@@ -4,6 +4,7 @@ import "./globals.css";
 import MusicPlayer from "@/components/MusicPlayer/MusicPlayer";
 import StarField from "@/components/StarField/StarField";
 import Preloader from "@/components/Preloader/Preloader";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <StarField />
         {children}
         <MusicPlayer />
+        <Script defer src="https://cloud.umami.is/script.js" data-website-id="9bb242ba-b5f6-4a89-ad5a-719b112fa7eb" strategy="afterInteractive" />
       </body>
     </html>
   );

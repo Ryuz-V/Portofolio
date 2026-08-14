@@ -87,8 +87,8 @@ const skillsData = [
 ];
 
 const categories = [
-    { id: "Semua", label: "Semua", count: skillsData.length },
-    { id: "Utama", label: "Utama", count: skillsData.filter((s) => s.utama).length },
+    { id: "All", label: "All", count: skillsData.length },
+    { id: "Main", label: "Main", count: skillsData.filter((s) => s.utama).length },
     { id: "Frontend", label: "Frontend", count: skillsData.filter((s) => s.category === "Frontend").length },
     { id: "Backend", label: "Backend", count: skillsData.filter((s) => s.category === "Backend").length },
     { id: "Mobile", label: "Mobile", count: skillsData.filter((s) => s.category === "Mobile").length },
@@ -154,8 +154,8 @@ export default function About() {
 
     // Filter skills based on tab
     const filteredSkills = skillsData.filter((skill) => {
-        if (activeTab === "Semua") return true;
-        if (activeTab === "Utama") return skill.utama;
+        if (activeTab === "All") return true;
+        if (activeTab === "Main") return skill.utama;
         return skill.category === activeTab;
     });
 
@@ -163,15 +163,15 @@ export default function About() {
         <div className={styles.container}>
             {/* ------------------ BIO SECTION ------------------ */}
             <section>
-                <h1 className={styles.heroTitle}>Halo, saya Jathniel Urdha H.</h1>
+                <h1 className={styles.heroTitle}>HELLO WORLD!, My Name Is Jathniel Urdha H.</h1>
                 <div className={styles.heroMeta}>
-                    <span><FiMapPin /> Berdomisili di Sampit, Indonesia <span style={{ fontSize: "0.7rem", border: "1px solid #444", padding: "0 2px", borderRadius: "3px" }}>ID</span></span>
+                    <span><FiMapPin /> Sampit, Indonesia <span style={{ fontSize: "0.7rem", border: "1px solid #444", padding: "0 2px" }}>ID</span></span>
                 </div>
                 <p className={styles.heroDesc}>
-                    Saya adalah seorang Siswa Yang Tertarik Pada Bidang Pemrograman Khususnya Development Aplikasi & Sofware Engineer yang senang mencoba dan mempelajari hal-hal baru. Saya mengutamakan kualitas tinggi bukan sekadar sebagai tugas, melainkan sebagai standar hidup. Didorong oleh rasa ingin tahu yang besar, saya memanfaatkan setiap tantangan sebagai motivasi untuk terus berkembang. Di dunia teknologi yang terus berubah dengan cepat, saya memilih tidak hanya mengikuti arus, tetapi terus berkembang untuk menciptakan sesuatu yang luar biasa.
+                    I am a student interested in programming, particularly app development and software engineering, who enjoys trying and learning new things. I prioritize high quality—not just as a requirement for assignments, but as a way of life. Driven by a strong sense of curiosity, I use every challenge as motivation to keep growing. In the rapidly evolving world of technology, I choose not just to go with the flow, but to keep growing so I can create something extraordinary.
                 </p>
                 <p className={styles.heroDesc}>
-                    Saat ini, saya sedang mempelajari dan bereksperimen dengan membangun proyek-proyek seperti bot, situs web, dan aplikasi.
+                    Currently, I am learning and experimenting by building projects like bots, websites, and applications.
                 </p>
             </section>
 
@@ -179,8 +179,8 @@ export default function About() {
 
             {/* ------------------ KEAHLIAN SECTION ------------------ */}
             <section>
-                <h2 className={styles.sectionTitle}><FiCode /> Keahlian</h2>
-                <p className={styles.sectionSubtitle}>Keahlian profesional saya.</p>
+                <h2 className={styles.sectionTitle}><FiCode /> Skill</h2>
+                <p className={styles.sectionSubtitle}>My Professional Skills.</p>
 
                 <div className={styles.skillTabs}>
                     {categories.map((cat) => (
@@ -400,7 +400,7 @@ export default function About() {
                         <h2 className={styles.sectionTitle}><FiActivity /> Umami</h2>
                         <p className={styles.sectionSubtitle}>Pantau trafik dan interaksi real-time dari situs portofolio saya.</p>
                     </div>
-                    <select style={{ backgroundColor: '#18181b', color: '#e5e7eb', padding: '0.5rem 1rem', borderRadius: '0.5rem', border: '1px solid #27272a', outline: 'none' }}>
+                    <select style={{ backgroundColor: '#18181b', color: '#e5e7eb', padding: '0.5rem 1rem', borderRadius: 0, border: '1px solid #27272a', outline: 'none' }}>
                         <option>Semua</option>
                     </select>
                 </div>
