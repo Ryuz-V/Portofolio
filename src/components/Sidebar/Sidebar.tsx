@@ -19,12 +19,10 @@ export default function Sidebar() {
             className={styles.avatarImage}
           />
         </div>
-
         <div className={styles.nameRow}>
           <h1 className={styles.name}>Jathniel Urdha</h1>
         </div>
         <p className={styles.username}>@Ryuz-V</p>
-
         <div className={styles.langSwitcher}>
           <button 
             type="button"
@@ -42,7 +40,6 @@ export default function Sidebar() {
           </button>
         </div>
       </div>
-
       <nav className={styles.navigation}>
         <Link href="/" className={`${styles.navItem} ${pathname === "/" ? styles.activeNav : ""}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></svg>
@@ -73,12 +70,10 @@ export default function Sidebar() {
         </Link>
         <Link href="/contact" className={`${styles.navItem} ${pathname === "/contact" ? styles.activeNav : ""}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          Contact
+          Social
         </Link>
-
         <div className={styles.divider}></div>
       </nav>
-
       <div className={styles.footer}>
         <p>COPYRIGHT © {new Date().getFullYear()}</p>
         <p>Ryuz-V. All rights reserved.</p>

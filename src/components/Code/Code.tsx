@@ -4,64 +4,89 @@ import React, { useState } from "react";
 import styles from "./Code.module.css";
 
 // ─── PROJECT DATA ──────────────────────────────────────────────────────────────
-const projects = [
-  {
-    id: "portfolio",
-    name: "portfolio",
-    subtitle: "Personal Website & Portfolio",
-    tag: "Live",
-    type: "code",
-    language: "tsx",
-    code: `// next.config.ts
-import type { NextConfig } from 'next';
-
-const config: NextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: [
-      'github.com',
-      'flagcdn.com',
-    ],
-  },
+export type Project = {
+  id: string;
+  name: string;
+  subtitle: string;
+  tag: string;
+  color: string;
+  thumbnail: string;
+  type?: "code" | "preview";
+  code?: string;
+  language?: string;
+  description: { EN: string; ID: string };
+  tags: string[];
+  github: {
+    repo: string;
+    docs: string;
+    language: string;
+    commits: string;
+    stargazers: string;
+    created: string;
+  };
+  personalComment: { EN: string; ID: string };
+  liveDemoUrl?: string;
 };
 
-export default config;`,
+const projects: Project[] = [
+  {
+    id: "Lacelux",
+    name: "Lacelux",
+    subtitle: "Shoe Store Website",
+    tag: "Website",
     color: "#7c3aed",
+    thumbnail: "/images/unnamed.webp",
+    description: {
+      EN: "This is my personal website and portfolio, designed to showcase my projects, skills, and experience as a developer. Built with modern web technologies, it focuses on performance, accessibility, and a clean user interface.",
+      ID: "Ini adalah situs web dan portofolio pribadi saya, dirancang untuk menampilkan proyek, keterampilan, dan pengalaman saya sebagai pengembang. Dibangun dengan teknologi web modern, situs ini berfokus pada performa, aksesibilitas, dan antarmuka pengguna yang bersih."
+    },
+    tags: ["web", "typescript", "react"],
+    github: {
+      repo: "Ryuz-V/Portofolio",
+      docs: "N/A",
+      language: "TypeScript",
+      commits: "N/A",
+      stargazers: "N/A",
+      created: "N/A"
+    },
+    personalComment: {
+      EN: "I built this portfolio to have a central place for my work. I chose to build it from scratch to have full control over the design and functionality.",
+      ID: "Saya membangun portofolio ini agar memiliki tempat terpusat untuk karya saya. Saya memilih untuk membangunnya dari awal agar memiliki kontrol penuh atas desain dan fungsionalitas."
+    },
+    liveDemoUrl: "https://example.com"
   },
   {
     id: "discord-bot",
-    name: "melodix",
+    name: "Discord Bot",
     subtitle: "Discord Music Bot",
-    tag: "Preview",
-    type: "code",
-    language: "py",
-    code: `# bot.py — Melodix Discord Bot
-import discord
-from discord.ext import commands
-import yt_dlp as youtube_dl
-
-intents = discord.Intents.default()
-intents.message_content = True
-bot = commands.Bot(
-  command_prefix='!',
-  intents=intents
-)
-
-@bot.command()
-async def play(ctx, *, query):
-  """Stream audio from YouTube."""
-  voice = ctx.author.voice
-  if not voice:
-    return await ctx.send('Join a VC first.')
-  vc = await voice.channel.connect()
-  await ctx.send(f'🎵 Playing: {query}')`,
+    tag: "Automation",
     color: "#3b82f6",
+    thumbnail: "/images/unnamed.webp",
+    description: {
+      EN: "Melodix is a robust Discord music bot written in Python using discord.py and yt-dlp. It provides high-quality audio streaming from various sources with a rich set of playback commands.",
+      ID: "Melodix adalah bot musik Discord tangguh yang ditulis dengan Python menggunakan discord.py dan yt-dlp. Bot ini menyediakan streaming audio berkualitas tinggi dari berbagai sumber dengan serangkaian perintah pemutaran yang lengkap."
+    },
+    tags: ["python", "discord", "bot"],
+    github: {
+      repo: "Ryuz-V/melodix",
+      docs: "N/A",
+      language: "Python",
+      commits: "N/A",
+      stargazers: "N/A",
+      created: "N/A"
+    },
+    personalComment: {
+      EN: "Creating a music bot was a fun challenge to understand asynchronous programming in Python and interacting with voice channels.",
+      ID: "Membuat bot musik adalah tantangan yang menyenangkan untuk memahami pemrograman asinkron dalam Python dan berinteraksi dengan saluran suara."
+    }
   },
   {
     id: "ryuz-api",
     name: "ryuz-api",
     subtitle: "REST API with Go & Fiber",
     tag: "WIP",
+    color: "#10b981",
+    thumbnail: "/images/unnamed.webp",
     type: "code",
     language: "go",
     code: `// main.go — Ryuz API
@@ -85,17 +110,48 @@ func main() {
 
   app.Listen(":3001")
 }`,
-    color: "#10b981",
+    description: {
+      EN: "A fast and lightweight REST API built with Go and the Fiber framework. It serves as the backend for several of my personal projects, handling user authentication, data storage, and business logic.",
+      ID: "REST API yang cepat dan ringan dibangun dengan Go dan kerangka kerja Fiber. Ini berfungsi sebagai backend untuk beberapa proyek pribadi saya, menangani autentikasi pengguna, penyimpanan data, dan logika bisnis."
+    },
+    tags: ["go", "api", "backend"],
+    github: {
+      repo: "Ryuz-V/ryuz-api",
+      docs: "N/A",
+      language: "Go",
+      commits: "N/A",
+      stargazers: "N/A",
+      created: "N/A"
+    },
+    personalComment: {
+      EN: "Go's performance and simplicity make it my go-to choice for building APIs. Fiber provides an Express-like experience which made the transition very smooth.",
+      ID: "Performa dan kesederhanaan Go menjadikannya pilihan utama saya untuk membangun API. Fiber memberikan pengalaman mirip Express yang membuat transisi menjadi sangat lancar."
+    }
   },
   {
     id: "jukendo-club",
     name: "jukendo-club",
     subtitle: "Club Website / Ippon!",
     tag: "Preview",
-    type: "preview",
-    previewBg: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-    previewContent: "Jukendo & Tankendo Club\nWebsite",
     color: "#f59e0b",
+    thumbnail: "/images/unnamed.webp",
+    description: {
+      EN: "A promotional and informational website for a local Jukendo and Tankendo club. Features include class schedules, membership information, and a gallery of events.",
+      ID: "Situs web promosi dan informasi untuk klub Jukendo dan Tankendo lokal. Fiturnya meliputi jadwal kelas, informasi keanggotaan, dan galeri acara."
+    },
+    tags: ["web", "design", "frontend"],
+    github: {
+      repo: "Ryuz-V/jukendo-club",
+      docs: "N/A",
+      language: "HTML/CSS",
+      commits: "N/A",
+      stargazers: "N/A",
+      created: "N/A"
+    },
+    personalComment: {
+      EN: "This project allowed me to work closely with a community group to meet their specific needs for an online presence.",
+      ID: "Proyek ini memungkinkan saya bekerja sama erat dengan kelompok komunitas untuk memenuhi kebutuhan spesifik mereka akan kehadiran daring."
+    }
   },
 ];
 
@@ -155,9 +211,9 @@ function renderCodeLine(line: string, lang: string, i: number) {
 }
 
 // ─── SINGLE PROJECT CARD ───────────────────────────────────────────────────────
-function ProjectCard({ project }: { project: (typeof projects)[0] }) {
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={onClick}>
       {/* Card Header */}
       <div className={styles.cardHeader}>
         <span className={styles.cardIcon}>
@@ -178,20 +234,124 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 
       {/* Card Body */}
       <div className={styles.cardBody}>
-        {project.type === "code" ? (
+        {project.type === "code" && project.code && project.language ? (
           <div className={styles.codeBlock}>
-            {project.code!.split("\n").map((line, i) =>
+            {project.code.split("\n").map((line, i) =>
               renderCodeLine(line, project.language!, i)
             )}
           </div>
         ) : (
-          <div
-            className={styles.previewBlock}
-            style={{ background: project.previewBg }}
-          >
-            <div className={styles.previewText}>{project.previewContent}</div>
+          <div className={styles.thumbnailWrapper}>
+            <img src={project.thumbnail} alt={project.name} className={styles.thumbnailImg} />
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+// ─── PROJECT DETAIL VIEW ───────────────────────────────────────────────────────
+function ProjectDetail({ project, lang }: { project: Project; lang: "EN" | "ID" }) {
+  const desc = project.description[lang];
+  const comment = project.personalComment[lang];
+
+  return (
+    <div className={styles.detailContainer}>
+      {/* About Box */}
+      <div className={styles.detailBox}>
+        <div className={styles.boxHeader}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+             <circle cx="12" cy="12" r="10" />
+             <line x1="12" y1="16" x2="12" y2="12" />
+             <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+          <span className={styles.boxTitle}>About</span>
+        </div>
+        <div className={styles.boxContent}>
+          <p className={styles.detailDesc}>{desc}</p>
+          <div className={styles.tagList}>
+            {project.tags.map(t => (
+              <span key={t} className={styles.detailTag}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.twoColumn}>
+        {/* GitHub Box */}
+        <div className={styles.detailBox}>
+          <div className={styles.boxHeader}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            <span className={styles.boxTitle}>GitHub</span>
+          </div>
+          <div className={styles.boxContent}>
+            <table className={styles.githubTable}>
+              <tbody>
+                <tr><td>Repository</td><td className={styles.alignRight}><a href={`https://github.com/${project.github.repo}`} target="_blank" rel="noreferrer" className={styles.link}>{project.github.repo}</a></td></tr>
+                <tr><td>Documentation</td><td className={styles.alignRight}>{project.github.docs}</td></tr>
+                <tr className={styles.spacer}></tr>
+                <tr><td>Language</td><td className={styles.alignRight}>{project.github.language}</td></tr>
+                <tr><td>Commits</td><td className={styles.alignRight}>{project.github.commits}</td></tr>
+                <tr><td>Stargazers</td><td className={styles.alignRight}>{project.github.stargazers}</td></tr>
+                <tr className={styles.spacer}></tr>
+                <tr><td>Created</td><td className={styles.alignRight}>{project.github.created}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Preview Box */}
+        <div className={styles.detailBox}>
+          <div className={styles.boxHeader}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span className={styles.boxTitle}>Preview</span>
+          </div>
+          <div className={styles.previewImageContent}>
+             <img src={project.thumbnail} alt={project.name} className={styles.previewImg} />
+          </div>
+        </div>
+      </div>
+
+      {/* Personal Comment Box */}
+      <div className={styles.detailBox}>
+        <div className={styles.boxHeader}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span className={styles.boxTitle}>Personal comment</span>
+        </div>
+        <div className={styles.boxContent}>
+          <p className={styles.detailDesc}>{comment}</p>
+        </div>
+      </div>
+
+      {/* Live demo Box */}
+      <div className={styles.detailBox}>
+        <div className={styles.boxHeader}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span className={styles.boxTitle}>Live demo</span>
+        </div>
+        <div className={styles.boxContent}>
+          {project.liveDemoUrl ? (
+            <div className={styles.demoNotice}>
+               <span className={styles.demoNoticeTitle}>[Notice]</span>
+               <p className={styles.demoNoticeText}>This tile has not been loaded automatically to save up resources.<br/>Click to boot it.</p>
+               <a href={project.liveDemoUrl} target="_blank" rel="noreferrer" className={styles.bootLink}>Boot Live Demo</a>
+            </div>
+          ) : (
+             <p className={styles.detailDesc}>No live demo available.</p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -200,24 +360,29 @@ function ProjectCard({ project }: { project: (typeof projects)[0] }) {
 // ─── MAIN COMPONENT ────────────────────────────────────────────────────────────
 export default function Code() {
   const [lang, setLang] = useState<"EN" | "ID">("EN");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const aboutText =
     lang === "EN"
       ? {
-          p1: "This section contains most of the coding projects I worked on, along with explanations, images, examples, and sometimes live demos.",
-          p2: "Use the sidebar to navigate to project details. The featured projects are my personal favorites and the ones I'm most proud of.",
-          p3: "The feed below is an aggregation of hand-picked projects. Click on any card to view details.",
+          p1: "This section showcases most of the projects I’ve worked on, featuring detailed explanations, visual previews, examples, and, when available, live demos. Each project reflects my experience in exploring ideas, solving problems, and turning concepts into functional and engaging digital experiences. From web development and UI/UX design to experimental and personal projects, this collection highlights my process, creativity, and continuous growth as a developer.",
+          p2: "This section features some of my standout projects, including personal favorites and work I’m especially proud of. Each one represents my creativity, skills, and the progress I’ve made along the way.",
+          p3: "The feed below is an aggregation of hand picked projects. Click on any card to view details.",
         }
       : {
-          p1: "Bagian ini berisi sebagian besar proyek coding yang pernah saya kerjakan, lengkap dengan penjelasan, gambar, contoh, dan terkadang demo langsung.",
-          p2: "Gunakan sidebar untuk melihat detail proyek. Proyek unggulan adalah favorit pribadi saya dan yang paling membanggakan.",
-          p3: "Feed di bawah adalah kumpulan proyek pilihan. Klik kartu mana saja untuk melihat detailnya.",
+          p1: "Bagian ini menampilkan sebagian besar proyek yang pernah saya kerjakan, lengkap dengan penjelasan terperinci, pratinjau visual, contoh, dan jika tersedia demo langsung. Setiap proyek mencerminkan pengalaman saya dalam mengeksplorasi ide, memecahkan masalah, serta mengubah konsep menjadi pengalaman digital yang fungsional dan menarik. Mulai dari pengembangan web dan desain UI/UX hingga proyek eksperimental dan pribadi, kumpulan ini menyoroti proses kerja, kreativitas, dan perkembangan berkelanjutan saya sebagai seorang pengembang.",
+          p2: "Bagian ini menampilkan beberapa proyek unggulan saya, termasuk favorit pribadi dan karya yang sangat saya banggakan. Masing-masing proyek mewakili kreativitas, keterampilan, dan kemajuan yang telah saya capai selama ini.",
+          p3: "Umpan di bawah ini merupakan kumpulan proyek yang dipilih secara khusus. Klik kartu mana pun untuk melihat detailnya.",
         };
 
   return (
     <div className={styles.wrapper}>
-      {/* ── Kotak khusus untuk pilihan bahasa di atas (Seperti Gambar 3) ── */}
       <div className={styles.topBar}>
+        {selectedProject && (
+          <button className={styles.backButton} onClick={() => setSelectedProject(null)}>
+            ← Back to Projects
+          </button>
+        )}
         <div className={styles.langToggle}>
           <button
             className={`${styles.langBtn} ${lang === "EN" ? styles.langActive : ""}`}
@@ -233,85 +398,49 @@ export default function Code() {
           </button>
         </div>
       </div>
+      
+      {/* ── Content Area ── */}
+      {selectedProject ? (
+        <ProjectDetail 
+          project={selectedProject} 
+          lang={lang} 
+        />
+      ) : (
+        <>
+          {/* ── About Panel ── */}
+          <div className={styles.aboutPanel}>
+            <div className={styles.aboutHeader}>
+              <span className={styles.aboutIcon}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+              </span>
+              <span className={styles.aboutTitle}>About</span>
+            </div>
 
-      {/* ── About Panel ── */}
-      <div className={styles.aboutPanel}>
-        <div className={styles.aboutHeader}>
-          <span className={styles.aboutIcon}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-          </span>
-          <span className={styles.aboutTitle}>About</span>
-        </div>
-
-        <div className={styles.aboutContent}>
-          <div className={styles.aboutText}>
-            <p>{aboutText.p1}</p>
-            <p>{aboutText.p2}</p>
-            <p>{aboutText.p3}</p>
+            <div className={styles.aboutContent}>
+              <div className={styles.aboutText}>
+                <p>{aboutText.p1}</p>
+                <p>{aboutText.p2}</p>
+                <p>{aboutText.p3}</p>
+              </div>
+              {/* Decorative illustration */}
+              <div className={styles.aboutIllustration}>
+                <img src="/images/tiredzani-zani.gif" alt="illustration" className={styles.illSvg} />
+              </div>
+            </div>
           </div>
-          {/* Decorative illustration */}
-          <div className={styles.aboutIllustration}>
-            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg" className={styles.illSvg}>
-              {/* Monitor */}
-              <rect x="20" y="10" width="80" height="60" rx="4" fill="none" stroke="rgba(124,58,237,0.6)" strokeWidth="2"/>
-              <rect x="20" y="10" width="80" height="12" rx="4" fill="rgba(124,58,237,0.3)"/>
-              <line x1="58" y1="70" x2="58" y2="85" stroke="rgba(124,58,237,0.5)" strokeWidth="2"/>
-              <rect x="44" y="85" width="28" height="4" rx="2" fill="rgba(124,58,237,0.4)"/>
-              {/* Code lines on monitor */}
-              <rect x="28" y="28" width="40" height="2" rx="1" fill="rgba(124,58,237,0.8)"/>
-              <rect x="28" y="34" width="28" height="2" rx="1" fill="rgba(59,130,246,0.8)"/>
-              <rect x="28" y="40" width="50" height="2" rx="1" fill="rgba(59,130,246,0.6)"/>
-              <rect x="28" y="46" width="35" height="2" rx="1" fill="rgba(124,58,237,0.7)"/>
-              <rect x="28" y="52" width="42" height="2" rx="1" fill="rgba(59,130,246,0.5)"/>
-              {/* Keyboard */}
-              <rect x="10" y="92" width="100" height="50" rx="6" fill="none" stroke="rgba(124,58,237,0.5)" strokeWidth="1.5"/>
-              {[0,1,2].map(row => (
-                [0,1,2,3,4,5,6,7,8].map(col => (
-                  <rect
-                    key={`${row}-${col}`}
-                    x={18 + col*11}
-                    y={99 + row*13}
-                    width="8" height="8"
-                    rx="2"
-                    fill="rgba(255,255,255,0.07)"
-                    stroke="rgba(255,255,255,0.12)"
-                    strokeWidth="0.5"
-                  />
-                ))
-              ))}
-              {/* Server towers right side */}
-              <rect x="130" y="60" width="40" height="80" rx="3" fill="none" stroke="rgba(59,130,246,0.5)" strokeWidth="1.5"/>
-              {[0,1,2,3,4].map(i => (
-                <rect key={i} x="134" y={68 + i*14} width="32" height="10" rx="2" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.3)" strokeWidth="0.8"/>
-              ))}
-              <circle cx="158" cy="73" r="2" fill="rgba(16,185,129,0.8)"/>
-              <circle cx="158" cy="87" r="2" fill="rgba(16,185,129,0.6)"/>
-              <circle cx="158" cy="101" r="2" fill="rgba(245,158,11,0.8)"/>
-              {/* Cables */}
-              <path d="M100 115 Q115 115 115 130 Q115 150 130 150" stroke="rgba(124,58,237,0.4)" strokeWidth="1.5" fill="none" strokeDasharray="4 2"/>
-              <path d="M100 125 Q120 125 120 140 Q120 155 130 155" stroke="rgba(59,130,246,0.4)" strokeWidth="1" fill="none" strokeDasharray="3 2"/>
-              {/* Floppy disks */}
-              <rect x="155" y="148" width="20" height="18" rx="2" fill="none" stroke="rgba(59,130,246,0.5)" strokeWidth="1"/>
-              <rect x="159" y="150" width="8" height="6" rx="1" fill="rgba(59,130,246,0.2)"/>
-              {/* Floating particles */}
-              <circle cx="190" cy="30" r="3" fill="rgba(124,58,237,0.5)"/>
-              <circle cx="205" cy="55" r="2" fill="rgba(59,130,246,0.4)"/>
-              <circle cx="195" cy="80" r="1.5" fill="rgba(16,185,129,0.5)"/>
-            </svg>
-          </div>
-        </div>
-      </div>
 
-      {/* ── Project Grid ── */}
-      <div className={styles.grid}>
-        {projects.map((p) => (
-          <ProjectCard key={p.id} project={p} />
-        ))}
-      </div>
+          {/* ── Project Grid ── */}
+          <div className={styles.grid}>
+            {projects.map((p) => (
+              <ProjectCard key={p.id} project={p} onClick={() => setSelectedProject(p)} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

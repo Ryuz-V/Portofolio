@@ -3,16 +3,13 @@ import styles from './Contact.module.css';
 
 const socialLinks = [
   { name: 'GitHub', icon: 'github', href: 'https://github.com/Ryuz-V' },
-  { name: 'LinkedIn', icon: 'linkedin', href: '#' },
-  { name: 'Twitter', icon: 'twitter', href: '#' },
-  { name: 'Facebook', icon: 'facebook', href: '#' },
-  { name: 'Messenger', icon: 'messenger', href: '#' },
+  { name: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/jathniel-urda-167a7834a/' },
+  { name: 'Twitter', icon: 'twitter', href: 'https://x.com/Niel_lah' },
+  { name: 'Facebook', icon: 'facebook', href: 'https://www.facebook.com/profile.php?id=100074383345625' },
   { name: 'WhatsApp', icon: 'whatsapp', href: '#' },
-  { name: 'Weixin', icon: 'weixin', href: '#' },
-  { name: 'Discord', icon: 'discord', href: '#' },
+  { name: 'Discord', icon: 'discord', href: 'https://discordapp.com/users/906879566847549471' },
   { name: 'dev.to', icon: 'devto', href: '#' },
   { name: 'Instagram', icon: 'instagram', href: '#' },
-  { name: 'Apple Music', icon: 'applemusic', href: '#' },
   { name: 'jsr', icon: 'jsr', href: '#' },
   { name: 'npm', icon: 'npm', href: '#' },
   { name: 'Root Me', icon: 'rootme', href: '#' },
@@ -52,39 +49,28 @@ export default function Contact() {
   return (
     <div className={styles.wrapper}>
       <div className={styles.panel}>
-        {/* Panel Header */}
         <div className={styles.panelHeader}>
-          <span className={styles.panelIcon}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
-          </span>
-          <span className={styles.panelTitle}>Contact</span>
+          <span className={styles.panelTitle}>Socials</span>
         </div>
-
-        {/* Panel Content */}
         <div className={styles.panelContent}>
           <div className={styles.panelText}>
             <p>You can find me on the following social networks, though I'm not necessarily very active on all of them.</p>
             <p>Any account not listed below that uses my name or one of my handles <strong>may not</strong> be me.</p>
             <p><strong>ryuzv.io</strong> is the only domain I use for my personal website.</p>
           </div>
-
-          <div className={styles.grid}>
-            {socialLinks.map((link, index) => (
-              <a key={index} href={link.href} className={styles.card} target="_blank" rel="noopener noreferrer">
-                <div className={styles.cardHeader}>
-                  {link.name}
-                </div>
-                <div className={styles.cardBody}>
-                  {renderIcon(link.icon)}
-                </div>
-              </a>
-            ))}
-          </div>
         </div>
+      </div>
+      <div className={styles.grid}>
+        {socialLinks.map((link, index) => (
+          <a key={index} href={link.href} className={styles.card} target="_blank" rel="noopener noreferrer">
+            <div className={styles.cardHeader}>
+              {link.name}
+            </div>
+            <div className={styles.cardBody}>
+              {renderIcon(link.icon)}
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
