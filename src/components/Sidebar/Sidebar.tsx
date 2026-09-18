@@ -49,16 +49,14 @@ export default function Sidebar() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           About
         </Link>
-        <Link href="#achievements" className={styles.navItem}>
+        <Link href="/achievements" className={`${styles.navItem} ${pathname === "/achievements" ? styles.activeNav : ""}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
           Achievements
         </Link>
         <Link href="/code" className={`${styles.navItem} ${pathname === "/code" ? styles.activeNav : ""}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-          Code
+          Project
         </Link>
-        
-        {/* BARI INI YANG DIUBAH: href dari "#resume" ke "/resume" dan ditambahkan logika activeNav */}
         <Link href="/resume" className={`${styles.navItem} ${pathname === "/resume" ? styles.activeNav : ""}`}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-7-7z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
           Resume

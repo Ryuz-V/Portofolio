@@ -37,8 +37,8 @@ const projects: Project[] = [
     color: "#7c3aed",
     thumbnail: "/images/unnamed.webp",
     description: {
-      EN: "This is my personal website and portfolio, designed to showcase my projects, skills, and experience as a developer. Built with modern web technologies, it focuses on performance, accessibility, and a clean user interface.",
-      ID: "Ini adalah situs web dan portofolio pribadi saya, dirancang untuk menampilkan proyek, keterampilan, dan pengalaman saya sebagai pengembang. Dibangun dengan teknologi web modern, situs ini berfokus pada performa, aksesibilitas, dan antarmuka pengguna yang bersih."
+      EN: "Lacelux is a footwear website inspired by Foot Locker and Puma, featuring a modern, dynamic, and responsive design. The website is developed using HTML, CSS, and JavaScript to provide a smooth and interactive user experience. Lacelux showcases a variety of footwear products with an appealing design, simple navigation, and a layout inspired by modern fashion websites.",
+      ID: "Lacelux adalah website sepatu yang mengambil referensi desain dari Foot Locker dan Puma, dengan tampilan modern, dinamis, dan responsif. Website ini dikembangkan menggunakan teknologi HTML, CSS, dan JavaScript untuk menciptakan pengalaman pengguna yang nyaman dan interaktif. Lacelux menampilkan berbagai produk sepatu dengan desain yang menarik, navigasi yang sederhana, serta layout yang disesuaikan dengan tren website fashion modern."
     },
     tags: ["web", "typescript", "react"],
     github: {

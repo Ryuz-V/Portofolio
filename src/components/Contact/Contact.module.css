@@ -23,6 +23,42 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+.langToggle {
+  display: flex;
+  margin-left: auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.langBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  color: #71717a;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.langBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #a1a1aa;
+}
+
+.activeLang {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
 .panelIcon {
   display: flex;
   align-items: center;

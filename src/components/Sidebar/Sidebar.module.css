@@ -6,9 +6,15 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Dibuat hidden agar tidak bisa dan tidak ada efek scroll sama sekali */
+  overflow-y: hidden; /* Dibuat hidden agar tidak bisa scroll */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   border-right: 1.5px solid rgba(255, 255, 255, 0.15); /* Dipertebal dan diperjelas warnanya */
   font-family: var(--font-body);
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 .logoContainer {
