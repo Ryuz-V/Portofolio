@@ -19,7 +19,7 @@ const tracks = [
 const defaultScUrl = "https://soundcloud.com/nocopyrightsounds/alan-walker-fade-ncs-release";
 
 export default function MusicPlayer() {
-  const [currentTrack, setCurrentTrack] = useState(tracks[0]);
+  const [currentTrack, setCurrentTrack] = useState(() => tracks[Math.floor(Math.random() * tracks.length)]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   
@@ -30,16 +30,9 @@ export default function MusicPlayer() {
   
   const widgetRef = useRef<any>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const iframeSrc = useRef<string>("");
+  const iframeSrc = useRef<string>(`https://w.soundcloud.com/player/?url=${encodeURIComponent(currentTrack?.scUrl)}&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`);
 
   useEffect(() => {
-    // Pilih lagu acak saat mount (untuk menghindari SSR Hydration Mismatch)
-    const randomTrack = tracks[Math.floor(Math.random() * tracks.length)] || tracks[0];
-    setCurrentTrack(randomTrack);
-    
-    // Set URL iframe di sebuah ref yang tidak berubah meskipun currentTrack state berubah
-    // Hal ini agar iframe TIDAK reload ulang yang akan memutuskan koneksi Widget API.
-    iframeSrc.current = `https://w.soundcloud.com/player/?url=${encodeURIComponent(randomTrack.scUrl)}&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false`;
     setIsMounted(true);
   }, []);
 

@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 import styles from "./Achievements.module.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 type Achievement = {
   id: string;
@@ -15,19 +18,19 @@ const achievements: Achievement[] = [
     id: "sighting-study",
     title: "Sighting drawing study",
     date: "Aug 21, 2026",
-    image: "/images/unnamed.webp"
+    image: "/file/cer_4.pdf"
   },
   {
     id: "bust-study",
     title: "Bust study",
     date: "Aug 7, 2026",
-    image: "/images/unnamed.webp"
+    image: "/file/cer_5.pdf"
   },
   {
     id: "landscape-study",
     title: "Landscape study (Mountain)",
     date: "Jul 24, 2026",
-    image: "/images/unnamed.webp"
+    image: "/file/cer_6.pdf"
   }
 ];
 
@@ -37,13 +40,15 @@ export default function Achievements() {
   const introText = lang === "EN" 
     ? (
       <>
-        I started drawing recently and I'm not very good at it yet, but with more practice I would like to eventually be able to illustrate by myself the universe and stories I have in mind.<br/>
-        Be indulgent, I'm doing my best!
+        This section showcases the awards I’ve received from seminars and competitions I’ve participated in from high school to the present.
+        <br/>
+        <br/>Tap the card to view full details and documentation.
       </>
     ) : (
       <>
-        Saya baru-baru ini mulai menggambar dan saya belum terlalu mahir, tetapi dengan lebih banyak latihan, saya ingin pada akhirnya dapat mengilustrasikan sendiri alam semesta dan cerita yang ada di pikiran saya.<br/>
-        Harap maklum, saya melakukan yang terbaik!
+        Bagian ini menampilkan penghargaan yang telah saya terima dari seminar dan kompetisi yang pernah saya ikuti, mulai dari masa SMA hingga saat ini.
+        <br/>
+        <br/>Ketuk kartu tersebut untuk melihat detail lengkap dan dokumentasinya.
       </>
     );
 
@@ -101,7 +106,17 @@ export default function Achievements() {
               </span>
             </div>
             <div className={styles.cardBody}>
-              <img src={item.image} alt={item.title} className={styles.cardImg} />
+              <Document 
+                file={item.image} 
+                className={styles.pdfWrapper}
+                loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
+              >
+                <Page 
+                  pageNumber={1} 
+                  renderTextLayer={false} 
+                  renderAnnotationLayer={false}
+                />
+              </Document>
             </div>
           </div>
         ))}
@@ -109,3 +124,4 @@ export default function Achievements() {
     </div>
   );
 }
+

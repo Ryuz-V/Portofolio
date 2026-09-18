@@ -40,11 +40,11 @@ const projects: Project[] = [
       EN: "Lacelux is a footwear website inspired by Foot Locker and Puma, featuring a modern, dynamic, and responsive design. The website is developed using HTML, CSS, and JavaScript to provide a smooth and interactive user experience. Lacelux showcases a variety of footwear products with an appealing design, simple navigation, and a layout inspired by modern fashion websites.",
       ID: "Lacelux adalah website sepatu yang mengambil referensi desain dari Foot Locker dan Puma, dengan tampilan modern, dinamis, dan responsif. Website ini dikembangkan menggunakan teknologi HTML, CSS, dan JavaScript untuk menciptakan pengalaman pengguna yang nyaman dan interaktif. Lacelux menampilkan berbagai produk sepatu dengan desain yang menarik, navigasi yang sederhana, serta layout yang disesuaikan dengan tren website fashion modern."
     },
-    tags: ["web", "typescript", "react"],
+    tags: ["Website", "E-Commerce", "Node"],
     github: {
-      repo: "Ryuz-V/Portofolio",
+      repo: "https://github.com/Ryuz-V/Lacelux.git",
       docs: "N/A",
-      language: "TypeScript",
+      language: "HTML, CSS, Java Script, Node, Python, MongoDB",
       commits: "N/A",
       stargazers: "N/A",
       created: "N/A"
@@ -66,7 +66,7 @@ const projects: Project[] = [
       EN: "Melodix is a robust Discord music bot written in Python using discord.py and yt-dlp. It provides high-quality audio streaming from various sources with a rich set of playback commands.",
       ID: "Melodix adalah bot musik Discord tangguh yang ditulis dengan Python menggunakan discord.py dan yt-dlp. Bot ini menyediakan streaming audio berkualitas tinggi dari berbagai sumber dengan serangkaian perintah pemutaran yang lengkap."
     },
-    tags: ["python", "discord", "bot"],
+    tags: ["Bot-Discord", "Bot", "Discord"],
     github: {
       repo: "Ryuz-V/melodix",
       docs: "N/A",
@@ -81,69 +81,21 @@ const projects: Project[] = [
     }
   },
   {
-    id: "ryuz-api",
-    name: "ryuz-api",
-    subtitle: "REST API with Go & Fiber",
-    tag: "WIP",
-    color: "#10b981",
-    thumbnail: "/images/unnamed.webp",
-    type: "code",
-    language: "go",
-    code: `// main.go — Ryuz API
-package main
-
-import (
-  "github.com/gofiber/fiber/v2"
-  "github.com/gofiber/fiber/v2/middleware/cors"
-)
-
-func main() {
-  app := fiber.New()
-  app.Use(cors.New())
-
-  app.Get("/health", func(c *fiber.Ctx) error {
-    return c.JSON(fiber.Map{
-      "status":  "ok",
-      "version": "1.0.0",
-    })
-  })
-
-  app.Listen(":3001")
-}`,
-    description: {
-      EN: "A fast and lightweight REST API built with Go and the Fiber framework. It serves as the backend for several of my personal projects, handling user authentication, data storage, and business logic.",
-      ID: "REST API yang cepat dan ringan dibangun dengan Go dan kerangka kerja Fiber. Ini berfungsi sebagai backend untuk beberapa proyek pribadi saya, menangani autentikasi pengguna, penyimpanan data, dan logika bisnis."
-    },
-    tags: ["go", "api", "backend"],
-    github: {
-      repo: "Ryuz-V/ryuz-api",
-      docs: "N/A",
-      language: "Go",
-      commits: "N/A",
-      stargazers: "N/A",
-      created: "N/A"
-    },
-    personalComment: {
-      EN: "Go's performance and simplicity make it my go-to choice for building APIs. Fiber provides an Express-like experience which made the transition very smooth.",
-      ID: "Performa dan kesederhanaan Go menjadikannya pilihan utama saya untuk membangun API. Fiber memberikan pengalaman mirip Express yang membuat transisi menjadi sangat lancar."
-    }
-  },
-  {
-    id: "jukendo-club",
-    name: "jukendo-club",
-    subtitle: "Club Website / Ippon!",
-    tag: "Preview",
+    id: "lyric-discord",
+    name: "Status Lyric Discord",
+    subtitle: "Discord Bot Status",
+    tag: "Utility",
     color: "#f59e0b",
     thumbnail: "/images/unnamed.webp",
     description: {
-      EN: "A promotional and informational website for a local Jukendo and Tankendo club. Features include class schedules, membership information, and a gallery of events.",
-      ID: "Situs web promosi dan informasi untuk klub Jukendo dan Tankendo lokal. Fiturnya meliputi jadwal kelas, informasi keanggotaan, dan galeri acara."
+      EN: "A project that lets you turn your Discord status into a place to display song lyrics when you play music on Spotify",
+      ID: "Sebuah Project yang mampu membuat status discord kalian menjadi tempat lyric music saat kalian mainkan di spotify"
     },
-    tags: ["web", "design", "frontend"],
+    tags: ["Integration", "Bot", "Bot-Discord", "Tools"],
     github: {
-      repo: "Ryuz-V/jukendo-club",
+      repo: "https://github.com/Ryuz-V/lyrics-status-discord.git",
       docs: "N/A",
-      language: "HTML/CSS",
+      language: "Java Script",
       commits: "N/A",
       stargazers: "N/A",
       created: "N/A"
@@ -295,11 +247,11 @@ function ProjectDetail({ project, lang }: { project: Project; lang: "EN" | "ID" 
               <tbody>
                 <tr><td>Repository</td><td className={styles.alignRight}><a href={`https://github.com/${project.github.repo}`} target="_blank" rel="noreferrer" className={styles.link}>{project.github.repo}</a></td></tr>
                 <tr><td>Documentation</td><td className={styles.alignRight}>{project.github.docs}</td></tr>
-                <tr className={styles.spacer}></tr>
+                <tr className={styles.spacer}><td colSpan={2}></td></tr>
                 <tr><td>Language</td><td className={styles.alignRight}>{project.github.language}</td></tr>
                 <tr><td>Commits</td><td className={styles.alignRight}>{project.github.commits}</td></tr>
                 <tr><td>Stargazers</td><td className={styles.alignRight}>{project.github.stargazers}</td></tr>
-                <tr className={styles.spacer}></tr>
+                <tr className={styles.spacer}><td colSpan={2}></td></tr>
                 <tr><td>Created</td><td className={styles.alignRight}>{project.github.created}</td></tr>
               </tbody>
             </table>

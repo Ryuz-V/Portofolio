@@ -376,7 +376,7 @@ export default function About() {
                         <h4 style={{ marginBottom: '1rem', color: '#a1a1aa', fontWeight: 500 }}>Editor</h4>
 
                         <div className={styles.progressItem}>
-                            <div className={styles.progressHeader}><span>Unknown Editor</span><span>73%</span></div>
+                            <div className={styles.progressHeader}><span>Antigravity IDE</span><span>73%</span></div>
                             <div className={styles.progressTrack}><div className={styles.progressBar} style={{ width: '73%' }}></div></div>
                         </div>
                         <div className={styles.progressItem}>
