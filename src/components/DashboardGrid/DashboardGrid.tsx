@@ -90,7 +90,7 @@ export default function DashboardGrid() {
               </div>
             </div>
 
-            {/* ── Image (selalu di atas kalau ada) ── */}
+            {/* ── Image ── */}
             {hasImage && (
               <div className={styles.thumbnail}>
                 <Image

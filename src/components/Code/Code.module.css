@@ -10,10 +10,11 @@
 /* ─── KOTAK BAR ATAS KHUSUS BAHASA ───────────────────────────────────────── */
 .topBar {
   width: 100%;
-  background: #1c1c24; 
+  background: #1c1c24;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
-  margin-bottom: 16px; /* Jarak 16px ke kotak About */
+  border-radius: 0;
+  margin-bottom: 16px;
+  /* Jarak 16px ke kotak About */
   display: flex;
   align-items: center;
   padding: 6px 12px;
@@ -37,7 +38,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: var(--font-body, 'Inter', sans-serif);
-  border-radius: 0; 
+  border-radius: 0;
 }
 
 .langBtn:first-child {
@@ -62,10 +63,11 @@
 
 /* ─── ABOUT PANEL ─────────────────────────────────────────────────────────── */
 .aboutPanel {
-  background: #141414; 
+  background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
-  margin-bottom: 16px; /* Jarak 16px ke grid proyek di bawahnya */
+  border-radius: 0;
+  margin-bottom: 16px;
+  /* Jarak 16px ke grid proyek di bawahnya */
   overflow: hidden;
 }
 
@@ -74,7 +76,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: #1c1c24; 
+  background: #1c1c24;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
@@ -138,14 +140,15 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px; /* Jarak antar kotak proyek 16px */
+  gap: 16px;
+  /* Jarak antar kotak proyek 16px */
 }
 
 /* ─── CARD ────────────────────────────────────────────────────────────────── */
 .card {
-  background: #141414; 
+  background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 0; 
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -165,7 +168,7 @@
   align-items: center;
   gap: 6px;
   padding: 7px 12px;
-  background: #1c1c24; 
+  background: #1c1c24;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   flex-wrap: nowrap;
   overflow: hidden;
@@ -210,15 +213,14 @@
 
 /* Card Body */
 .cardBody {
-  flex: 1;
-  min-height: 200px;
+  height: 420px;
   overflow: hidden;
 }
 
 /* ─── CODE BLOCK ──────────────────────────────────────────────────────────── */
 .codeBlock {
   padding: 1rem 0.5rem;
-  background: #141414; 
+  background: #141414;
   height: 100%;
   min-height: 200px;
   overflow: hidden;
@@ -272,19 +274,14 @@
   justify-content: center;
   overflow: hidden;
   background: #0f0f13;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .thumbnailImg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover .thumbnailImg {
-  opacity: 1;
-  transform: scale(1.02);
+  object-fit: contain;
 }
 
 /* ─── PROJECT DETAIL ──────────────────────────────────────────────────────── */
@@ -305,6 +302,7 @@
   display: flex;
   align-items: center;
 }
+
 .backButton:hover {
   color: #fff;
 }
@@ -325,6 +323,7 @@
   padding: 8px 14px;
   color: #d4d4d8;
 }
+
 .boxTitle {
   font-size: 0.8rem;
   font-weight: 600;
@@ -350,6 +349,7 @@
   gap: 8px;
   flex-wrap: wrap;
 }
+
 .detailTag {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -371,20 +371,25 @@
   color: #a1a1aa;
   border-collapse: collapse;
 }
+
 .githubTable td {
   padding: 4px 0;
 }
+
 .alignRight {
   text-align: right;
   color: #d4d4d8;
 }
+
 .spacer {
   height: 8px;
 }
+
 .link {
   color: #3b82f6;
   text-decoration: none;
 }
+
 .link:hover {
   text-decoration: underline;
 }
@@ -398,11 +403,12 @@
   padding: 16px;
   min-height: 200px;
 }
+
 .previewImg {
   max-width: 100%;
   max-height: 100%;
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .demoNotice {
@@ -415,17 +421,20 @@
   align-items: center;
   gap: 12px;
 }
+
 .demoNoticeTitle {
   font-weight: 600;
   color: #d4d4d8;
   font-size: 0.85rem;
 }
+
 .demoNoticeText {
   color: #a1a1aa;
   font-size: 0.8rem;
   line-height: 1.5;
   margin: 0;
 }
+
 .bootLink {
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -435,13 +444,16 @@
   font-size: 0.75rem;
   transition: background 0.2s;
 }
+
 .bootLink:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .grid, .twoColumn {
+
+  .grid,
+  .twoColumn {
     grid-template-columns: 1fr;
   }
 

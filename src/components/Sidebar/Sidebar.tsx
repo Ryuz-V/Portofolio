@@ -23,22 +23,6 @@ export default function Sidebar() {
           <h1 className={styles.name}>Jathniel Urdha</h1>
         </div>
         <p className={styles.username}>@Ryuz-V</p>
-        <div className={styles.langSwitcher}>
-          <button 
-            type="button"
-            className={`${styles.langBtn} ${activeLang === 'en' ? styles.active : ''}`}
-            onClick={() => setActiveLang('en')}
-          >
-            <img src="https://flagcdn.com/w40/us.png" alt="US Flag" className={styles.flagIcon} />
-          </button>
-          <button 
-            type="button"
-            className={`${styles.langBtn} ${activeLang === 'id' ? styles.active : ''}`}
-            onClick={() => setActiveLang('id')}
-          >
-            <img src="https://flagcdn.com/w40/id.png" alt="ID Flag" className={styles.flagIcon} />
-          </button>
-        </div>
       </div>
       <nav className={styles.navigation}>
         <Link href="/" className={`${styles.navItem} ${pathname === "/" ? styles.activeNav : ""}`}>

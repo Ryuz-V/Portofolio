@@ -35,7 +35,7 @@ const projects: Project[] = [
     subtitle: "Shoe Store Website",
     tag: "Website",
     color: "#7c3aed",
-    thumbnail: "/images/unnamed.webp",
+    thumbnail: "https://res.cloudinary.com/yhwdbquf/video/upload/v1789699047/0401.mp4",
     description: {
       EN: "Lacelux is a footwear website inspired by Foot Locker and Puma, featuring a modern, dynamic, and responsive design. The website is developed using HTML, CSS, and JavaScript to provide a smooth and interactive user experience. Lacelux showcases a variety of footwear products with an appealing design, simple navigation, and a layout inspired by modern fashion websites.",
       ID: "Lacelux adalah website sepatu yang mengambil referensi desain dari Foot Locker dan Puma, dengan tampilan modern, dinamis, dan responsif. Website ini dikembangkan menggunakan teknologi HTML, CSS, dan JavaScript untuk menciptakan pengalaman pengguna yang nyaman dan interaktif. Lacelux menampilkan berbagai produk sepatu dengan desain yang menarik, navigasi yang sederhana, serta layout yang disesuaikan dengan tren website fashion modern."
@@ -242,7 +242,11 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           </div>
         ) : (
           <div className={styles.thumbnailWrapper}>
-            <img src={project.thumbnail} alt={project.name} className={styles.thumbnailImg} />
+            {project.thumbnail.match(/\.(mp4|webm|ogg)$/i) ? (
+              <video src={project.thumbnail} autoPlay loop muted playsInline className={styles.thumbnailImg} />
+            ) : (
+              <img src={project.thumbnail} alt={project.name} className={styles.thumbnailImg} />
+            )}
           </div>
         )}
       </div>
@@ -313,7 +317,11 @@ function ProjectDetail({ project, lang }: { project: Project; lang: "EN" | "ID" 
             <span className={styles.boxTitle}>Preview</span>
           </div>
           <div className={styles.previewImageContent}>
-             <img src={project.thumbnail} alt={project.name} className={styles.previewImg} />
+            {project.thumbnail.match(/\.(mp4|webm|ogg)$/i) ? (
+              <video src={project.thumbnail} autoPlay loop muted playsInline className={styles.previewImg} />
+            ) : (
+              <img src={project.thumbnail} alt={project.name} className={styles.previewImg} />
+            )}
           </div>
         </div>
       </div>
