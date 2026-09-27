@@ -27,8 +27,8 @@ const achievements: Achievement[] = [
     title: "Preparation Course for Azure AI Fundamentals (AI-900)",
     date: "Fri, Jul 25, 2025",
     image: "/file/cer_4.pdf",
-    descriptionEn: "This certificate was awarded for participating in the sighting drawing study.",
-    descriptionId: "Sertifikat ini diberikan karena telah berpartisipasi dalam studi menggambar sighting.",
+    descriptionEn: "Organized by Mereka Academy in collaboration with Komdigi and Microsoft, a seminar was held for all schools and the general public to discuss the use of Azure AI.",
+    descriptionId: "Diselengarakan oleh Mereka Academy dan bekerja sama dengan Komdigi dan Microsoft melakukan seminar untuk seluruh Sekolah dan umum dengan membahas penggunaan Azure AI.",
     organizer: "Mereka Academy,Komdigi,Microsoft",
     location: "Online [Website]",
     role: "Participant",
@@ -59,6 +59,70 @@ const achievements: Achievement[] = [
     location: "N/A",
     role: "Participant",
     topic: "Infra Competition",
+  },
+  {
+    id: "ai-asean",
+    title: "AI For Asean",
+    date: "Sep 19, 2026",
+    image: "/file/cer_4.pdf",
+    descriptionEn: "This is a placeholder for the fourth achievement. Please update with actual details.",
+    descriptionId: "Ini adalah contoh untuk pencapaian keempat. Silakan perbarui dengan detail yang sebenarnya.",
+    organizer: "AI Read ASEAN, ASEAN Foundation",
+    location: "Online [Zoom, Webisite]",
+    role: "Participant",
+    topic: "AI",
+    duration: "N/A",
+  },
+  {
+    id: "placeholder-5",
+    title: "Pencapaian Baru (Contoh 5)",
+    date: "TBD",
+    image: "/file/cer_4.pdf",
+    descriptionEn: "This is a placeholder for the fifth achievement.",
+    descriptionId: "Ini adalah contoh untuk pencapaian kelima.",
+    organizer: "Nama Penyelenggara",
+    location: "Lokasi",
+    role: "Participant",
+    topic: "Topik",
+    duration: "N/A",
+  },
+  {
+    id: "placeholder-6",
+    title: "Pencapaian Baru (Contoh 6)",
+    date: "TBD",
+    image: "/file/cer_5.pdf",
+    descriptionEn: "This is a placeholder for the sixth achievement.",
+    descriptionId: "Ini adalah contoh untuk pencapaian keenam.",
+    organizer: "Nama Penyelenggara",
+    location: "Lokasi",
+    role: "Participant",
+    topic: "Topik",
+    duration: "N/A",
+  },
+  {
+    id: "placeholder-7",
+    title: "Pencapaian Baru (Contoh 7)",
+    date: "TBD",
+    image: "/file/cer_6.pdf",
+    descriptionEn: "This is a placeholder for the seventh achievement.",
+    descriptionId: "Ini adalah contoh untuk pencapaian ketujuh.",
+    organizer: "Nama Penyelenggara",
+    location: "Lokasi",
+    role: "Participant",
+    topic: "Topik",
+    duration: "N/A",
+  },
+  {
+    id: "placeholder-8",
+    title: "Pencapaian Baru (Contoh 8)",
+    date: "TBD",
+    image: "/file/cer_4.pdf",
+    descriptionEn: "This is a placeholder for the eighth achievement.",
+    descriptionId: "Ini adalah contoh untuk pencapaian kedelapan.",
+    organizer: "Nama Penyelenggara",
+    location: "Lokasi",
+    role: "Participant",
+    topic: "Topik",
     duration: "N/A",
   }
 ];
@@ -67,18 +131,18 @@ export default function Achievements() {
   const [lang, setLang] = useState<"EN" | "ID">("EN");
   const [selected, setSelected] = useState<Achievement | null>(null);
 
-  const introText = lang === "EN" 
+  const introText = lang === "EN"
     ? (
       <>
         This section showcases the awards I’ve received from seminars and competitions I’ve participated in from high school to the present.
-        <br/>
-        <br/>Tap the card to view full details and documentation.
+        <br />
+        <br />Tap the card to view full details and documentation.
       </>
     ) : (
       <>
         Bagian ini menampilkan penghargaan yang telah saya terima dari seminar dan kompetisi yang pernah saya ikuti, mulai dari masa SMA hingga saat ini.
-        <br/>
-        <br/>Ketuk kartu tersebut untuk melihat detail lengkap dan dokumentasinya.
+        <br />
+        <br />Ketuk kartu tersebut untuk melihat detail lengkap dan dokumentasinya.
       </>
     );
 
@@ -87,7 +151,11 @@ export default function Achievements() {
       <div className={styles.wrapper}>
         <div className={styles.topBarDetail}>
           <button className={styles.backBtn} onClick={() => setSelected(null)}>
-            &larr; Back to Achievements
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+              <line x1="22" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Achievements
           </button>
           <div className={styles.langToggle}>
             <button
@@ -188,14 +256,14 @@ export default function Achievements() {
               <span className={styles.panelTitle}>Preview</span>
             </div>
             <div className={styles.previewContent}>
-              <Document 
-                file={selected.image} 
+              <Document
+                file={selected.image}
                 className={styles.pdfWrapperDetail}
                 loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
               >
-                <Page 
-                  pageNumber={1} 
-                  renderTextLayer={false} 
+                <Page
+                  pageNumber={1}
+                  renderTextLayer={false}
                   renderAnnotationLayer={false}
                 />
               </Document>
@@ -221,10 +289,13 @@ export default function Achievements() {
               </div>
             ) : (
               <div className={styles.emptyDoc}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="28" height="28" style={{ marginBottom: "4px" }}>
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
                 <p className={styles.noticeTitle}>[Notice]</p>
-                <p className={styles.noticeText}>This tile has not been loaded automatically to save up resources.</p>
-                <p className={styles.noticeText}>Click to boot it.</p>
-                <button className={styles.bootBtn}>Boot Live Demo</button>
+                <p className={styles.noticeText}>Look's Like I Don't Have Any DOC For This </p>
               </div>
             )}
           </div>
@@ -287,14 +358,14 @@ export default function Achievements() {
               </span>
             </div>
             <div className={styles.cardBody}>
-              <Document 
-                file={item.image} 
+              <Document
+                file={item.image}
                 className={styles.pdfWrapper}
                 loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
               >
-                <Page 
-                  pageNumber={1} 
-                  renderTextLayer={false} 
+                <Page
+                  pageNumber={1}
+                  renderTextLayer={false}
                   renderAnnotationLayer={false}
                 />
               </Document>

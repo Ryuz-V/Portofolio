@@ -10,10 +10,10 @@
 /* ─── KOTAK BAR ATAS KHUSUS BAHASA ───────────────────────────────────────── */
 .topBar {
   width: 100%;
-  background: #1c1c24; 
+  background: #1c1c24;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
-  margin-bottom: 16px; 
+  border-radius: 0;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   padding: 6px 12px;
@@ -37,7 +37,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: var(--font-body, 'Inter', sans-serif);
-  border-radius: 0; 
+  border-radius: 0;
 }
 
 .langActive {
@@ -53,10 +53,10 @@
 
 /* ─── ABOUT PANEL ─────────────────────────────────────────────────────────── */
 .aboutPanel {
-  background: #141414; 
+  background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
-  margin-bottom: 16px; 
+  border-radius: 0;
+  margin-bottom: 16px;
   overflow: hidden;
 }
 
@@ -65,7 +65,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: #1c1c24; 
+  background: #1c1c24;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
@@ -108,14 +108,14 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  height: 50rem;
+  grid-auto-rows: 25rem;
 }
 
 /* ─── CARD ────────────────────────────────────────────────────────────────── */
 .card {
-  background: #141414; 
+  background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 0; 
+  border-radius: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -133,7 +133,7 @@
   align-items: center;
   gap: 6px;
   padding: 7px 12px;
-  background: #1c1c24; 
+  background: #1c1c24;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   flex-wrap: nowrap;
   overflow: hidden;
@@ -178,7 +178,7 @@
   height: 100%;
 }
 
-.pdfWrapper > div,
+.pdfWrapper>div,
 .pdfWrapper .react-pdf__Page {
   width: 100% !important;
   height: 100% !important;
@@ -206,10 +206,10 @@
 /* ─── DETAIL VIEW SPECIFIC ─────────────────────────────────────────────── */
 .topBarDetail {
   width: 100%;
-  background: #1c1c24; 
+  background: #1c1c24;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
-  margin-bottom: 16px; 
+  border-radius: 0;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -218,6 +218,9 @@
 }
 
 .backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   background: transparent;
   border: none;
   color: #a1a1aa;
@@ -245,10 +248,12 @@
   }
 }
 
-.descPanel, .previewPanel, .docPanel {
-  background: #141414; 
+.descPanel,
+.previewPanel,
+.docPanel {
+  background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0; 
+  border-radius: 0;
   display: flex;
   flex-direction: column;
 }
@@ -258,7 +263,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: #1c1c24; 
+  background: #1c1c24;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
@@ -288,6 +293,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   padding-bottom: 8px;
 }
+
 .descRow:last-child {
   border-bottom: none;
   padding-bottom: 0;
@@ -324,7 +330,7 @@
   justify-content: center;
 }
 
-.pdfWrapperDetail > div,
+.pdfWrapperDetail>div,
 .pdfWrapperDetail .react-pdf__Page {
   width: 100% !important;
   max-width: 100%;
