@@ -65,11 +65,11 @@ const achievements: Achievement[] = [
   {
     id: "ai-asean",
     title: "AI For Asean",
-    date: "Sep 19, 2026",
+    date: "Sep 23, 2026",
     image: "/file/cer_7.pdf",
-    descriptionEn: "",
-    descriptionId: "Ini adalah contoh untuk pencapaian keempat. Silakan perbarui dengan detail yang sebenarnya.",
-    organizer: "AI Read ASEAN, ASEAN Foundation",
+    descriptionEn: "Certificate of attendance and completion of the seminar organized by the ASEAN Foundation on the wise use of AI in today's modern AI era",
+    descriptionId: "Sertifikat penghargaan kehadiran dan menyelesaikan seminar yang diselengarakan oleh ASEAN Foundation untuk penggunaan AI yang bijak pada era modern AI saat ini",
+    organizer: "AI Ready ASEAN, ASEAN Foundation",
     location: "Online [Zoom, Webisite]",
     role: "Participant",
     topic: "AI",
@@ -129,7 +129,7 @@ export default function Achievements() {
       </>
     ) : (
       <>
-        Bagian ini menampilkan penghargaan yang telah saya terima dari seminar dan kompetisi yang pernah saya ikuti, mulai dari masa SMA hingga saat ini.
+        Bagian ini menampilkan penghargaan yang telah saya terima dari seminar atau kompetisi yang pernah saya ikuti, mulai dari masa SMK hingga saat ini.
         <br />
         <br />Ketuk kartu tersebut untuk melihat detail lengkap dan dokumentasinya.
       </>

@@ -193,6 +193,25 @@
   color: #fff;
 }
 
+.disabledNav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.disabledNav svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+}
+
 .divider {
   height: 1px;
   background-color: #1a1a1a;
