@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+import dynamic from "next/dynamic";
 import styles from "./Achievements.module.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+const PdfRenderer = dynamic(() => import("./PdfRenderer"), { ssr: false });
+
+const isPdf = (url: string) => url.toLowerCase().endsWith(".pdf");
 
 type Achievement = {
   id: string;
@@ -64,8 +66,8 @@ const achievements: Achievement[] = [
     id: "ai-asean",
     title: "AI For Asean",
     date: "Sep 19, 2026",
-    image: "/file/cer_4.pdf",
-    descriptionEn: "This is a placeholder for the fourth achievement. Please update with actual details.",
+    image: "/file/cer_7.pdf",
+    descriptionEn: "",
     descriptionId: "Ini adalah contoh untuk pencapaian keempat. Silakan perbarui dengan detail yang sebenarnya.",
     organizer: "AI Read ASEAN, ASEAN Foundation",
     location: "Online [Zoom, Webisite]",
@@ -74,10 +76,10 @@ const achievements: Achievement[] = [
     duration: "N/A",
   },
   {
-    id: "placeholder-5",
-    title: "Pencapaian Baru (Contoh 5)",
-    date: "TBD",
-    image: "/file/cer_4.pdf",
+    id: "forum-genre",
+    title: "Pelantikan Dan Seminar Forum Genre Kabupaten Banyumas",
+    date: "June 21, 2025",
+    image: "/images/cer_1.png",
     descriptionEn: "This is a placeholder for the fifth achievement.",
     descriptionId: "Ini adalah contoh untuk pencapaian kelima.",
     organizer: "Nama Penyelenggara",
@@ -90,7 +92,7 @@ const achievements: Achievement[] = [
     id: "placeholder-6",
     title: "Pencapaian Baru (Contoh 6)",
     date: "TBD",
-    image: "/file/cer_5.pdf",
+    image: "/images/cer_2.png",
     descriptionEn: "This is a placeholder for the sixth achievement.",
     descriptionId: "Ini adalah contoh untuk pencapaian keenam.",
     organizer: "Nama Penyelenggara",
@@ -103,7 +105,7 @@ const achievements: Achievement[] = [
     id: "placeholder-7",
     title: "Pencapaian Baru (Contoh 7)",
     date: "TBD",
-    image: "/file/cer_6.pdf",
+    image: "/images/cer_3.png",
     descriptionEn: "This is a placeholder for the seventh achievement.",
     descriptionId: "Ini adalah contoh untuk pencapaian ketujuh.",
     organizer: "Nama Penyelenggara",
@@ -112,19 +114,6 @@ const achievements: Achievement[] = [
     topic: "Topik",
     duration: "N/A",
   },
-  {
-    id: "placeholder-8",
-    title: "Pencapaian Baru (Contoh 8)",
-    date: "TBD",
-    image: "/file/cer_4.pdf",
-    descriptionEn: "This is a placeholder for the eighth achievement.",
-    descriptionId: "Ini adalah contoh untuk pencapaian kedelapan.",
-    organizer: "Nama Penyelenggara",
-    location: "Lokasi",
-    role: "Participant",
-    topic: "Topik",
-    duration: "N/A",
-  }
 ];
 
 export default function Achievements() {
@@ -256,17 +245,20 @@ export default function Achievements() {
               <span className={styles.panelTitle}>Preview</span>
             </div>
             <div className={styles.previewContent}>
-              <Document
-                file={selected.image}
-                className={styles.pdfWrapperDetail}
-                loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
-              >
-                <Page
-                  pageNumber={1}
-                  renderTextLayer={false}
-                  renderAnnotationLayer={false}
+              {isPdf(selected.image) ? (
+                <PdfRenderer
+                  file={selected.image}
+                  className={styles.pdfWrapperDetail}
+                  loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
                 />
-              </Document>
+              ) : (
+                <img 
+                  src={selected.image} 
+                  alt={selected.title} 
+                  className={styles.pdfWrapperDetail} 
+                  style={{ objectFit: 'contain', width: '100%', height: '100%', backgroundColor: 'white' }} 
+                />
+              )}
             </div>
           </div>
         </div>
@@ -358,17 +350,20 @@ export default function Achievements() {
               </span>
             </div>
             <div className={styles.cardBody}>
-              <Document
-                file={item.image}
-                className={styles.pdfWrapper}
-                loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
-              >
-                <Page
-                  pageNumber={1}
-                  renderTextLayer={false}
-                  renderAnnotationLayer={false}
+              {isPdf(item.image) ? (
+                <PdfRenderer
+                  file={item.image}
+                  className={styles.pdfWrapper}
+                  loading={<div style={{ padding: '20px', color: '#a1a1aa', fontSize: '0.8rem' }}>Loading PDF...</div>}
                 />
-              </Document>
+              ) : (
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  className={styles.pdfWrapper} 
+                  style={{ objectFit: 'contain', width: '100%', height: '100%', backgroundColor: 'white' }} 
+                />
+              )}
             </div>
           </div>
         ))}
