@@ -364,24 +364,38 @@
   gap: 16px;
 }
 
-.githubTable {
-  width: 100%;
-  font-size: 0.8rem;
-  color: #a1a1aa;
-  border-collapse: collapse;
+.descList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.githubTable td {
-  padding: 4px 0;
+.descRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 8px;
 }
 
-.alignRight {
-  text-align: right;
+.descRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.descLabel {
+  font-size: 0.75rem;
+  color: #71717a;
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.descValue {
+  font-size: 0.75rem;
   color: #d4d4d8;
-}
-
-.spacer {
-  height: 8px;
+  text-align: right;
+  word-break: break-word;
 }
 
 .link {

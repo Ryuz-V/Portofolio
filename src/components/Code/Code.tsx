@@ -61,10 +61,10 @@ const projects: Project[] = [
     subtitle: "Discord Music Bot",
     tag: "Automation",
     color: "#3b82f6",
-    thumbnail: "/images/unnamed.webp",
+    thumbnail: "/images/music_bot.png",
     description: {
-      EN: "Melodix is a robust Discord music bot written in Python using discord.py and yt-dlp. It provides high-quality audio streaming from various sources with a rich set of playback commands.",
-      ID: "Melodix adalah bot musik Discord tangguh yang ditulis dengan Python menggunakan discord.py dan yt-dlp. Bot ini menyediakan streaming audio berkualitas tinggi dari berbagai sumber dengan serangkaian perintah pemutaran yang lengkap."
+      EN: "A Discord music bot written in Python using discord.py and yt-dlp. This bot provides high-quality audio streaming from various sources with a comprehensive set of playback commands. The main features I’m proud of in this bot include a more modern, user-friendly UI and features such as radio, playlists, autoplay, and other standard music features commonly found in music apps.",
+      ID: "Bot musik Discord yang ditulis dalam bahasa Python menggunakan discord.py dan yt-dlp. Bot ini menyediakan streaming audio berkualitas tinggi dari berbagai sumber dengan serangkaian perintah pemutaran yang lengkap. Fitur utama yang kubanggakan dalam bot ini UI button yang lebih moderen,Ramah untuk pengguna dan fitur seperti radui,playlist,autoplay dan lainnya yang lengkap seperti pada musik pada umumnya."
     },
     tags: ["Bot-Discord", "Bot", "Discord"],
     github: {
@@ -243,18 +243,32 @@ function ProjectDetail({ project, lang }: { project: Project; lang: "EN" | "ID" 
             <span className={styles.boxTitle}>GitHub</span>
           </div>
           <div className={styles.boxContent}>
-            <table className={styles.githubTable}>
-              <tbody>
-                <tr><td>Repository</td><td className={styles.alignRight}><a href={`https://github.com/${project.github.repo}`} target="_blank" rel="noreferrer" className={styles.link}>{project.github.repo}</a></td></tr>
-                <tr><td>Documentation</td><td className={styles.alignRight}>{project.github.docs}</td></tr>
-                <tr className={styles.spacer}><td colSpan={2}></td></tr>
-                <tr><td>Language</td><td className={styles.alignRight}>{project.github.language}</td></tr>
-                <tr><td>Commits</td><td className={styles.alignRight}>{project.github.commits}</td></tr>
-                <tr><td>Stargazers</td><td className={styles.alignRight}>{project.github.stargazers}</td></tr>
-                <tr className={styles.spacer}><td colSpan={2}></td></tr>
-                <tr><td>Created</td><td className={styles.alignRight}>{project.github.created}</td></tr>
-              </tbody>
-            </table>
+            <div className={styles.descList}>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Repository</span>
+                <span className={styles.descValue}><a href={`https://github.com/${project.github.repo}`} target="_blank" rel="noreferrer" className={styles.link}>{project.github.repo}</a></span>
+              </div>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Documentation</span>
+                <span className={styles.descValue}>{project.github.docs}</span>
+              </div>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Language</span>
+                <span className={styles.descValue}>{project.github.language}</span>
+              </div>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Commits</span>
+                <span className={styles.descValue}>{project.github.commits}</span>
+              </div>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Stargazers</span>
+                <span className={styles.descValue}>{project.github.stargazers}</span>
+              </div>
+              <div className={styles.descRow}>
+                <span className={styles.descLabel}>Created</span>
+                <span className={styles.descValue}>{project.github.created}</span>
+              </div>
+            </div>
           </div>
         </div>
 
