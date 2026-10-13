@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Jathniel Urdha Herauwan",
+    "label": "Fullstack Developer & Ai Enginer",
+    "image": "",
+    "email": "urdhajathniel@gmail.com",
+    "phone": "+62 812 6079 0893",
+    "url": "https://portofolio-kamu.com",
+    "summary": "Fullstack developer passionate about building modern web applications...",
+    "location": {
+      "city": "Jakarta",
+      "countryCode": "ID",
+      "region": "Indonesia"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "Ryuz-V",
+        "url": "https://github.com/Ryuz-V"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Tech Company",
+      "position": "Frontend Engineer",
+      "startDate": "2024-01-01",
+      "endDate": "2024-01-01",
+      "summary": "Developing scalable UI components using React and Next.js.",
+      "highlights": [
+        "Improved website performance and SEO scores by 20%",
+        "Collaborated with cross-functional teams to ship features"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universitas Kamu",
+      "area": "Computer Science",
+      "studyType": "Bachelor",
+      "startDate": "2019-09-01",
+      "endDate": "2023-08-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["TypeScript", "JavaScript", "Python", "Go", "HTML", "CSS"]
+    },
+    {
+      "name": "Frameworks & Tools",
+      "keywords": ["React", "Next.js", "Fiber", "Tailwind CSS", "Git"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Lacelux",
+      "description": "Footwear e-commerce website inspired by Foot Locker and Puma.",
+      "url": "https://github.com/Ryuz-V/Lacelux.git"
+    }
+  ]
+}

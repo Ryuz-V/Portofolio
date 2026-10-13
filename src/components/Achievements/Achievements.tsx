@@ -114,6 +114,20 @@ const achievements: Achievement[] = [
     topic: "Topik",
     duration: "N/A",
   },
+  {
+    id: "placeholder-8",
+    title: "Pencapaian Baru (Contoh 8)",
+    date: "TBD",
+    image: "/images/cer_4.png",
+    descriptionEn: "This is a placeholder for the seventh achievement.",
+    descriptionId: "Ini adalah contoh untuk pencapaian ketujuh.",
+    organizer: "Nama Penyelenggara",
+    location: "Lokasi",
+    role: "Participant",
+    topic: "Topik",
+    duration: "N/A",
+  },
+
 ];
 
 export default function Achievements() {

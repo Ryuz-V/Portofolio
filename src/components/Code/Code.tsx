@@ -82,7 +82,7 @@ const projects: Project[] = [
   },
   {
     id: "lyric-discord",
-    name: "Status Lyric Discord",
+    name: "Status Discord",
     subtitle: "Discord Bot Status",
     tag: "Utility",
     color: "#f59e0b",
