@@ -166,7 +166,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0.6rem 1rem; /* Padding dibuat sedikit lebih tebal kembali agar pas */
-  border-radius: 10px;
+  border-radius: 0;
   color: #888;
   font-size: 0.9rem;
   font-weight: 500;
@@ -198,7 +198,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0.6rem 1rem;
-  border-radius: 10px;
+  border-radius: 0;
   color: #555;
   font-size: 0.9rem;
   font-weight: 500;
