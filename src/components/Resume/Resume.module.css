@@ -244,6 +244,13 @@
   font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 }
 
+.summaryText {
+  font-size: 0.85rem;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .paper {

@@ -2,14 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Jathniel Urdha Herauwan",
-    "label": "Fullstack Developer & Ai Enginer",
+    "label": "Fullstack Developer & AI Engineer",
     "image": "",
     "email": "urdhajathniel@gmail.com",
     "phone": "+62 812 6079 0893",
-    "url": "https://portofolio-kamu.com",
-    "summary": "Fullstack developer passionate about building modern web applications...",
+    "url": "",
+    "summary": "Fullstack developer and AI engineer passionate about building modern web applications, scalable user interfaces, and integrating intelligent AI solutions. Experienced in Next.js, React, TypeScript, Python, and cloud-based architecture.",
     "location": {
-      "city": "Jakarta",
+      "city": "Purwokerto",
       "countryCode": "ID",
       "region": "Indonesia"
     },
@@ -18,20 +18,36 @@
         "network": "GitHub",
         "username": "Ryuz-V",
         "url": "https://github.com/Ryuz-V"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "jathniel-urda-167a7834a",
+        "url": "https://www.linkedin.com/in/jathniel-urda-167a7834a/"
       }
     ]
   },
-  "work": [
+  "skills": [
     {
-      "name": "Tech Company",
-      "position": "Frontend Engineer",
-      "startDate": "2024-01-01",
-      "endDate": "2024-01-01",
-      "summary": "Developing scalable UI components using React and Next.js.",
-      "highlights": [
-        "Improved website performance and SEO scores by 20%",
-        "Collaborated with cross-functional teams to ship features"
-      ]
+      "name": "Programming And Technical Skills",
+      "keywords": ["TypeScript", "JavaScript", "Python", "React", "HTML", "CSS", "MongoDB", "VS Code", "Figma", "Adobe Ilustrator", "Tailwind", "Laravel", "PHP", "NextJS", "NodeJs", "Boostrap", "Mysql"]
+    },
+    {
+      "name": "Soft Skill",
+      "keywords": ["React", "Next.js", "Fiber", "Tailwind CSS", "Git"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Lacelux",
+      "description": "Footwear e-commerce website inspired by Foot Locker and Puma, built with modern and dynamic UI/UX.",
+      "url": "https://github.com/Ryuz-V/Lacelux.git",
+      "keywords": ["Website", "E-Commerce", "JavaScript", "Node.js"]
+    },
+    {
+      "name": "Melodix Discord Music Bot",
+      "description": "High-quality Discord audio streaming bot built with Python, discord.py, and yt-dlp featuring playlists, autoplay, and modern button controls.",
+      "url": "https://github.com/Ryuz-V/melodix",
+      "keywords": ["Python", "discord.py", "yt-dlp", "Bot"]
     }
   ],
   "education": [
@@ -43,21 +59,49 @@
       "endDate": "2023-08-01"
     }
   ],
-  "skills": [
+  "certificates": [
     {
-      "name": "Programming Languages",
-      "keywords": ["TypeScript", "JavaScript", "Python", "Go", "HTML", "CSS"]
+      "name": "Preparation Course for Azure AI Fundamentals (AI-900)",
+      "date": "2025-07-25",
+      "issuer": "Mereka Academy, Komdigi, Microsoft",
+      "url": ""
     },
     {
-      "name": "Frameworks & Tools",
-      "keywords": ["React", "Next.js", "Fiber", "Tailwind CSS", "Git"]
+      "name": "AI For Asean",
+      "date": "2026-09-23",
+      "issuer": "AI Ready ASEAN, ASEAN Foundation",
+      "url": ""
+    },
+    {
+      "name": "Gemini K12",
+      "date": "2026-09-21",
+      "issuer": "Google Gemini",
+      "url": ""
+    },
+    {
+      "name": "Dilesen Git For Beginner",
+      "date": "2025-10-27",
+      "issuer": "Dilesin Academy",
+      "url": ""
+    },
+    {
+      "name": "Tech for Good UI/UX Competition",
+      "date": "2024-12-06",
+      "issuer": "Universitas Ma'arif Nahdlatul Ulama",
+      "url": ""
     }
   ],
-  "projects": [
+  "organizations": [
     {
-      "name": "Lacelux",
-      "description": "Footwear e-commerce website inspired by Foot Locker and Puma.",
-      "url": "https://github.com/Ryuz-V/Lacelux.git"
+      "organization": "Forum Genre Kabupaten Banyumas",
+      "position": "Participant & Member",
+      "startDate": "2025-06-21",
+      "endDate": "2025-06-21",
+      "summary": "Berpartisipasi aktif dalam kegiatan Pelantikan dan Seminar Forum Genre Kabupaten Banyumas untuk pemberdayaan generasi berencana dan edukasi pemuda.",
+      "highlights": [
+        "Mengikuti seminar peningkatan literasi dan kapasitas kepemudaan",
+        "Berkolaborasi dengan anggota Forum Genre antar perwakilan wilayah"
+      ]
     }
   ]
 }

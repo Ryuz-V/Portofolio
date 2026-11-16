@@ -9,13 +9,17 @@ import resumeData from "@/data/resume.json";
 function formatDate(dateStr: string | undefined): string {
   if (!dateStr) return "Present";
   const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
   return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
 
 function dateRange(start?: string, end?: string): string {
+  if (!start && !end) return "";
+  if (start && !end) return formatDate(start) + " - Present";
+  if (!start && end) return formatDate(end);
+  if (start === end) return formatDate(start);
   return formatDate(start) + " - " + formatDate(end);
 }
-
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -31,16 +35,19 @@ type ResumeData = {
     profiles?: { network: string; username: string; url: string }[];
   };
   work?: { name: string; position: string; location?: string; startDate?: string; endDate?: string; summary?: string; highlights?: string[]; keywords?: string[] }[];
-  education?: { institution: string; area: string; studyType: string; startDate?: string; endDate?: string; score?: string; courses?: string[] }[];
   skills?: { name: string; keywords: string[] }[];
   projects?: { name: string; description?: string; url?: string; startDate?: string; endDate?: string; entity?: string; highlights?: string[]; keywords?: string[] }[];
+  education?: { institution: string; area: string; studyType: string; startDate?: string; endDate?: string; score?: string; courses?: string[] }[];
+  certificates?: { name: string; date?: string; issuer?: string; url?: string; summary?: string }[];
+  organizations?: { organization: string; position: string; startDate?: string; endDate?: string; summary?: string; highlights?: string[] }[];
 };
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Resume() {
-  const { basics, work, education, skills, projects } = resumeData as ResumeData;
+  const { basics, skills, projects, education, certificates, organizations } = resumeData as ResumeData;
   const githubProfile = basics.profiles?.find((p) => p.network.toLowerCase() === "github");
+  const linkedinProfile = basics.profiles?.find((p) => p.network.toLowerCase() === "linkedin");
 
   return (
     <div className={styles.wrapper}>
@@ -62,7 +69,7 @@ export default function Resume() {
           </div>
           <div className={styles.headerRight}>
             <span className={styles.openText}>Open in new tab</span>
-            <a href={basics.url || "#"} className={styles.iconLink} target="_blank" rel="noopener noreferrer">
+            <a href={basics.url || githubProfile?.url || "#"} className={styles.iconLink} target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="14" height="14">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>
@@ -91,7 +98,25 @@ export default function Resume() {
                     {" "}github.com/{githubProfile.username}
                   </a>
                 )}
-                {basics.url && (
+                {basics.phone && (
+                  <a href={`tel:${basics.phone.replace(/\s+/g, "")}`}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    {" "}{basics.phone}
+                  </a>
+                )}
+                {linkedinProfile && (
+                  <a href={linkedinProfile.url} target="_blank" rel="noopener noreferrer">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect x="2" y="9" width="4" height="12"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    {" "}linkedin.com/in/{linkedinProfile.username}
+                  </a>
+                )}
+                {basics.url && !basics.url.includes("portofolio-kamu.com") && (
                   <a href={basics.url} target="_blank" rel="noopener noreferrer">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <circle cx="12" cy="12" r="10"></circle>
@@ -102,13 +127,13 @@ export default function Resume() {
                   </a>
                 )}
                 {basics.email && (
-                  <span>
+                  <a href={`mailto:${basics.email}`}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                     {" "}{basics.email}
-                  </span>
+                  </a>
                 )}
                 {basics.location && (
                   <span>
@@ -122,36 +147,33 @@ export default function Resume() {
               </div>
             </header>
 
-            {/* Work Experience */}
-            {work && work.length > 0 && (
+            {/* 1. Professional Summary */}
+            {basics.summary && (
               <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Work Experience</h2>
-                {work.map((job, i) => (
-                  <div className={styles.entry} key={i}>
-                    <div className={styles.entryHeader}>
-                      <h3 className={styles.entryTitle}>{job.position}</h3>
-                      <span className={styles.entryDate}>{dateRange(job.startDate, job.endDate)}</span>
+                <h2 className={styles.sectionTitle}>Professional Summary</h2>
+                <p className={styles.summaryText}>{basics.summary}</p>
+              </section>
+            )}
+
+            {/* 2. Skills */}
+            {skills && skills.length > 0 && (
+              <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Skills</h2>
+                {skills.map((skill, i) => (
+                  <div className={styles.skillCategory} key={i}>
+                    <strong>{skill.name}:</strong>
+                    <div className={styles.badges}>
+                      {skill.keywords.map((kw, j) => <span key={j}>{kw}</span>)}
                     </div>
-                    <div className={styles.entrySubtitle}>{job.name}{job.location ? " • " + job.location : ""}</div>
-                    {job.highlights && job.highlights.length > 0 && (
-                      <ul className={styles.entryList}>
-                        {job.highlights.map((h, j) => <li key={j}>{h}</li>)}
-                      </ul>
-                    )}
-                    {job.keywords && job.keywords.length > 0 && (
-                      <div className={styles.badges}>
-                        {job.keywords.map((kw, k) => <span key={k}>{kw}</span>)}
-                      </div>
-                    )}
                   </div>
                 ))}
               </section>
             )}
 
-            {/* Projects */}
+            {/* 3. Project */}
             {projects && projects.length > 0 && (
               <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Projects</h2>
+                <h2 className={styles.sectionTitle}>Project</h2>
                 {projects.map((proj, i) => (
                   <div className={styles.entry} key={i}>
                     <div className={styles.entryHeader}>
@@ -179,7 +201,7 @@ export default function Resume() {
               </section>
             )}
 
-            {/* Education */}
+            {/* 4. Education */}
             {education && education.length > 0 && (
               <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>Education</h2>
@@ -202,16 +224,46 @@ export default function Resume() {
               </section>
             )}
 
-            {/* Skills */}
-            {skills && skills.length > 0 && (
+            {/* 5. Certificate */}
+            {certificates && certificates.length > 0 && (
               <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>Skills</h2>
-                {skills.map((skill, i) => (
-                  <div className={styles.skillCategory} key={i}>
-                    <strong>{skill.name}:</strong>
-                    <div className={styles.badges}>
-                      {skill.keywords.map((kw, j) => <span key={j}>{kw}</span>)}
+                <h2 className={styles.sectionTitle}>Certificate</h2>
+                {certificates.map((cert, i) => (
+                  <div className={styles.entry} key={i}>
+                    <div className={styles.entryHeader}>
+                      <h3 className={styles.entryTitle}>
+                        {cert.url ? <a href={cert.url} target="_blank" rel="noopener noreferrer">{cert.name}</a> : cert.name}
+                      </h3>
+                      {cert.date && (
+                        <span className={styles.entryDate}>{formatDate(cert.date)}</span>
+                      )}
                     </div>
+                    {cert.issuer && <div className={styles.entrySubtitle}>{cert.issuer}</div>}
+                    {cert.summary && <p style={{ margin: "4px 0 8px", fontSize: "0.85rem", opacity: 0.8 }}>{cert.summary}</p>}
+                  </div>
+                ))}
+              </section>
+            )}
+
+            {/* 6. Organizational Experience */}
+            {organizations && organizations.length > 0 && (
+              <section className={styles.section}>
+                <h2 className={styles.sectionTitle}>Organizational Experience</h2>
+                {organizations.map((org, i) => (
+                  <div className={styles.entry} key={i}>
+                    <div className={styles.entryHeader}>
+                      <h3 className={styles.entryTitle}>{org.position}</h3>
+                      {(org.startDate || org.endDate) && (
+                        <span className={styles.entryDate}>{dateRange(org.startDate, org.endDate)}</span>
+                      )}
+                    </div>
+                    <div className={styles.entrySubtitle}>{org.organization}</div>
+                    {org.summary && <p style={{ margin: "4px 0 8px", fontSize: "0.85rem", opacity: 0.8 }}>{org.summary}</p>}
+                    {org.highlights && org.highlights.length > 0 && (
+                      <ul className={styles.entryList}>
+                        {org.highlights.map((h, j) => <li key={j}>{h}</li>)}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </section>
