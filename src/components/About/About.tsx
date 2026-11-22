@@ -110,7 +110,7 @@ const umamiChartData = [
 ];
 
 export default function About() {
-    const [activeTab, setActiveTab] = useState("Semua");
+    const [activeTab, setActiveTab] = useState("All");
 
     // State for dynamic API data
     const [githubUser, setGithubUser] = useState<any>(null);
